@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 21a58e6d917a24b8d92a1dedc1e71dad
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Meteorite: {fileID: 184830, guid: a4688b74c4d444082b32a7711457417e, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

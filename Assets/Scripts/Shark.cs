@@ -12,7 +12,7 @@ public class Shark : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
-		spawnRange = new Vector2(sharkSpawn.renderer.bounds.min.x, sharkSpawn.renderer.bounds.max.x);
+		spawnRange = new Vector2(sharkSpawn.collider2D.bounds.min.x, sharkSpawn.collider2D.bounds.max.x);
 	}
 	
 	// Update is called once per frame

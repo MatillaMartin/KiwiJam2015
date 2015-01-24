@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileable: 0
-  scrollSpeed: 0
+  scrollSpeed: .0500000007
   stopAtNextLoop: 0
 --- !u!23 &78760111
 Renderer:
@@ -159,6 +159,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2114933381}
   m_RootOrder: 1
+--- !u!1 &473967940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 473967941}
+  - 61: {fileID: 473967942}
+  - 114: {fileID: 473967943}
+  - 114: {fileID: 473967944}
+  m_Layer: 0
+  m_Name: Meteorite Spawn Left
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &473967941
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473967940}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.98999977, y: 21.6299992, z: 1.89999998}
+  m_LocalScale: {x: 12.7720013, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1394851316}
+  m_RootOrder: 1
+--- !u!61 &473967942
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473967940}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1, y: 1}
+  m_Center: {x: 0, y: 0}
+--- !u!114 &473967943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473967940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c41153a3e87a4b58a2208fff2d62501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &473967944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 473967940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a58e6d917a24b8d92a1dedc1e71dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Meteorite: {fileID: 184830, guid: a4688b74c4d444082b32a7711457417e, type: 2}
+  spawnTimerRange: {x: 5, y: 8}
 --- !u!1 &492174092
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +430,7 @@ GameObject:
   - 4: {fileID: 870236873}
   - 33: {fileID: 870236872}
   - 61: {fileID: 870236871}
-  - 23: {fileID: 870236870}
+  - 114: {fileID: 870236870}
   m_Layer: 0
   m_Name: SharkSpawn
   m_TagString: Untagged
@@ -373,26 +438,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &870236870
-Renderer:
+--- !u!114 &870236870
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 870236869}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c41153a3e87a4b58a2208fff2d62501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &870236871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -419,7 +475,7 @@ Transform:
   m_GameObject: {fileID: 870236869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.0219999999, y: .00800000038, z: .349999994}
-  m_LocalScale: {x: .570366263, y: .100122891, z: 1}
+  m_LocalScale: {x: 1.63980603, y: .100122891, z: 1}
   m_Children: []
   m_Father: {fileID: 749145532}
   m_RootOrder: 1
@@ -507,8 +563,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 749145532}
+  - {fileID: 473967941}
+  - {fileID: 1787957316}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!114 &1394851317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,7 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccac9267fb01945838692465670c8dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: .100000001
+  cameraSpeed: .0500000007
   parallaxObject: []
   wallScript: 
 --- !u!1 &1741801543
@@ -549,7 +607,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!1 &1771632168
 GameObject:
   m_ObjectHideFlags: 0
@@ -635,6 +693,71 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1771632168}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1787957315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1787957316}
+  - 61: {fileID: 1787957318}
+  - 114: {fileID: 1787957317}
+  - 114: {fileID: 1787957319}
+  m_Layer: 0
+  m_Name: Meteorite Spawn Right
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1787957316
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1787957315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.30000019, y: 21.6299992, z: 1.89999998}
+  m_LocalScale: {x: 12.7720013, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1394851316}
+  m_RootOrder: 2
+--- !u!114 &1787957317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1787957315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c41153a3e87a4b58a2208fff2d62501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &1787957318
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1787957315}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 1, y: 1}
+  m_Center: {x: 0, y: 0}
+--- !u!114 &1787957319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1787957315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a58e6d917a24b8d92a1dedc1e71dad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Meteorite: {fileID: 184830, guid: a4688b74c4d444082b32a7711457417e, type: 2}
+  spawnTimerRange: {x: 4, y: 7}
 --- !u!1 &2114933380
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,4 +786,4 @@ Transform:
   - {fileID: 1771632169}
   - {fileID: 78760114}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
