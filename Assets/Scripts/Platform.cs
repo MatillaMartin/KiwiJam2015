@@ -45,8 +45,10 @@ public class Platform
 		}
 		Debug.Log ("ntiles " + nTiles.ToString());
 		Debug.Log ("tilecount " + generatedTiles.Count.ToString());
-		
-		Quaternion orientation = Quaternion.FromToRotation(Vector2.right, tilingVector);
+
+		Vector2 finalRightVector = Vector2.Dot(Vector2.right, tilingVector) > 0 ? Vector2.right : -Vector2.right;
+
+		Quaternion orientation = Quaternion.FromToRotation(finalRightVector, tilingVector);
 		platform.transform.rotation = orientation;
 		platform.transform.position = this.start;
 
