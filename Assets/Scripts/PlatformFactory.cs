@@ -8,20 +8,26 @@ public class PlatformFactory : MonoBehaviour {
 	private bool m_bPlatformStarted = false;
 	private Vector2 m_mousePosition;
 	private Vector2 m_platformStart, m_platformEnd;
-	
+
+	[SerializeField] int m_platformMaxBlocks;
+	int m_buildingBlocks;
+
 	[SerializeField] GameObject m_platformTile;
 	[SerializeField] GameObject m_platformTileLeft;
 	[SerializeField] GameObject m_platformTileRight;
 
 	private Platform m_buildingPlatform;
-
+	private Platform m_lastPlatform;
+	
 	private List<Platform> m_platforms;
+	private List<GameObject> m_tiles;
 	
 	void Start () {
 		//load textures etc..
 
 		//init platform list
 		m_platforms = new List<Platform>();
+		m_tiles = new List<GameObject> ();
 	}
 
 	void Update () {
@@ -64,8 +70,9 @@ public class PlatformFactory : MonoBehaviour {
 
 	void StartPlatform(Vector2 platformStart)
 	{
+		int maxBlocks = m_platformMaxBlocks - m_tiles.Count;
 		Debug.Log("platorm started at "); Debug.Log (platformStart);
-		m_buildingPlatform = new Platform (m_platformTile, m_platformTileLeft, m_platformTileRight);
+		m_buildingPlatform = new Platform (m_platformTile, m_platformTileLeft, m_platformTileRight, maxBlocks);
 		m_platformStart = platformStart;
 		m_bPlatformStarted = true;
 		//start event to draw line etc (TODO:visuals)
@@ -76,7 +83,19 @@ public class PlatformFactory : MonoBehaviour {
 //		Vector2 platformVector = platformTemporalEnd - platformStart;
 //		float angle = Vector2.Angle(platformVector, Vector2.right);
 //		Debug.Log(angle); //angle dodgy... [0 -> 180 -> 0]
-		m_buildingPlatform.DynamicConstruction (platformStart, platformTemporalEnd);
+		int nBlocksBuilding = m_buildingPlatform.DynamicConstruction (platformStart, platformTemporalEnd);
+		nBlocksBuilding = Mathf.Min (nBlocksBuilding, m_tiles.Count);
+		Debug.Log (m_tiles.Count);
+		Debug.Log (nBlocksBuilding);
+		for (int i = 0; i < m_tiles.Count; i++) 
+		{
+			m_tiles[i].GetComponent<SpriteRenderer>().color = new Color(1.0f,1.0f,1.0f);
+		}
+		for (int i = 0; i < nBlocksBuilding; i++) 
+		{
+			m_tiles[i].GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+		}
+		m_buildingBlocks = nBlocksBuilding;
 	}
 
 	void CancelPlatform()
@@ -90,184 +109,18 @@ public class PlatformFactory : MonoBehaviour {
 		{
 			m_bPlatformStarted = false;	
 			Debug.Log("creating platform");
-			m_buildingPlatform.TileTiles(platformStart, platformEnd);
+			m_buildingPlatform.ConfirmPlatform();
 			m_platforms.Add(m_buildingPlatform);
-		}
-	}
-}
-
-public class Platform
-{
-	Vector2 start, end, lastEnd;
-	GameObject tile, tileLeft, tileRight; //tile as prefab
-	float tileWidth;
-
-	GameObject platform;
-
-	List<GameObject> generatedTiles = new List<GameObject> ();
-
-//	public Platform(GameObject platformTile, GameObject platformTileLeft, GameObject platformTileRight, Vector2 platformStart, Vector2 platformEnd)
-//	{
-//		this.tile = platformTile;
-//		this.tileLeft = platformTileLeft;
-//		this.tileRight = platformTileRight;
-//		this.tileWidth = this.tile.GetComponent<SpriteRenderer>().renderer.bounds.size.x;
-//		this.platform = new GameObject ();
-//		this.platform.name = "Platform";
-//
-//		this.start = platformStart;
-//		this.end = platformEnd;
-//		TileTiles(start, end);
-//		Remove ();
-//	}
-	public Platform (GameObject platformTile, GameObject platformTileLeft, GameObject platformTileRight)
-	{
-		this.tile = platformTile;
-		this.tileLeft = platformTileLeft;
-		this.tileRight = platformTileRight;
-		this.tileWidth = this.tile.GetComponent<SpriteRenderer>().renderer.bounds.size.x;
-		this.platform = new GameObject ();
-		this.platform.name = "Platform";
-	}
-
-	public void InstanceTiles(int nTiles)
-	{
-		foreach (GameObject go in generatedTiles) {
-			GameObject.Destroy(go);
-		}
-		generatedTiles.Clear();
-
-		if (nTiles < 2) {
-			Debug.LogError ("at least 2 tiles needed");
-			return;
-		}
-		generatedTiles.Add ((GameObject)GameObject.Instantiate (tileLeft));
-		for (int i = 0; i < nTiles - 2; i++) {
-			generatedTiles.Add ((GameObject)GameObject.Instantiate (tile));
-		}
-		generatedTiles.Add ((GameObject)GameObject.Instantiate (tileRight));
-	}
-
-	public void PositionTiles(Vector2 platformStart, Vector2 platformDirection, Quaternion orientation, float tileWidth)
-	{
-		Vector2 tilePosition = platformStart;
-
-		for(int i = 0; i < generatedTiles.Count; i++)
-		{
-			tilePosition = platformStart + platformDirection.normalized*i*tileWidth;
-			//generatedTiles[i].transform.rotation = orientation;
-			generatedTiles[i].transform.position = tilePosition;
-			//set as child
-			//generatedTiles[i].transform.parent = platform.transform;
-		}
-	}
-
-	public void DynamicConstruction(Vector2 platformStart, Vector2 platformEnd)
-	{
-		lastEnd = end;
-		this.start = platformStart;
-		this.end = platformEnd;
-		//if starting and ending position are too close, then increase width to accomodate left and right tiles
-		if ((this.end - this.start).magnitude < tileWidth) {
-			this.end = this.start + Vector2.right * tileWidth;
-		}
-
-		Vector2 tilingVector = this.end-this.start;
-		float distance = tilingVector.magnitude;
-		int nTiles = (int)(distance / this.tileWidth);
-		Debug.Log ("ntiles" + nTiles.ToString());
-
-		Quaternion orientation = Quaternion.FromToRotation(Vector2.right, tilingVector);
-		platform.transform.rotation = orientation;
-		platform.transform.position = this.start;
-		
-		if (nTiles != generatedTiles.Count || lastEnd != end) 
-		{
-//			InstanceTiles(nTiles);
-//			PositionTiles(this.start, this.end, orientation, tileWidth);
-			foreach (GameObject go in generatedTiles) {
-				GameObject.Destroy(go);
-			}
-			generatedTiles.Clear();
-			Vector2 position = start;
-			generatedTiles.Add ((GameObject)GameObject.Instantiate (tileLeft, new Vector3 (position.x, position.y), orientation));
-			
-			for(int i = 1; i < nTiles; i++)
+			Debug.Log("tiles before :" + m_tiles.Count.ToString());
+			for(int i = 0; i < m_buildingBlocks; i++)
 			{
-				position = start + tilingVector.normalized*i*tileWidth;
-				generatedTiles.Add ((GameObject)GameObject.Instantiate(tile, new Vector3(position.x, position.y) , orientation));
+				GameObject.Destroy(m_tiles[i]);
 			}
+			Debug.Log("tiles after :" + m_tiles.Count.ToString());
+			m_tiles.RemoveRange(0,m_buildingBlocks);
+			m_tiles.AddRange(m_buildingPlatform.getTiles());
 			
-			position = start + tilingVector.normalized*nTiles*tileWidth;
-			generatedTiles.Add ((GameObject)GameObject.Instantiate (tileRight, new Vector3 (position.x, position.y), orientation));
-			
-			foreach (GameObject child in generatedTiles) {
-				child.transform.parent = platform.transform;
-			}
-		}
-
-
-	}
-
-	public void TileTiles(Vector2 platformStart, Vector2 platformEnd)
-	{
-		foreach (GameObject go in generatedTiles) {
-			GameObject.Destroy (go);
-		}
-		this.start = platformStart;
-		this.end = platformEnd;
-
-		//generate orientation and distance variables to ease tiling calculus
-		platform.transform.position = start;
-
-		//if starting and ending position are too close, then increase width to accomodate left and right tiles
-		if ((end - start).magnitude < tileWidth) {
-			Debug.Log("Too small");
-			Debug.Log(end);
-			Debug.Log(start);
-			Debug.Log((end - start).magnitude);
-			Debug.Log(tileWidth);
-			end = start + Vector2.right*tileWidth;
-		}
-		bool leftToRight = start.x <= end.x;
-		Vector2 tilingVector = end-start;
-		float distance = tilingVector.magnitude;
-		Quaternion orientation = Quaternion.FromToRotation(Vector2.right, tilingVector);
-		platform.transform.rotation = orientation;
-		
-		//nTiles that fit in distance, at least left and right (+1)
-		int nTiles = (int)(distance / tileWidth);
-		Debug.Log (nTiles);
-
-		Vector2 position = start;
-		generatedTiles.Add ((GameObject)GameObject.Instantiate (tileLeft, new Vector3 (position.x, position.y), orientation));
-
-		for(int i = 1; i < nTiles; i++)
-		{
-			position = start + tilingVector.normalized*i*tileWidth;
-			generatedTiles.Add ((GameObject)GameObject.Instantiate(tile, new Vector3(position.x, position.y) , orientation));
-		}
-
-		position = start + tilingVector.normalized*nTiles*tileWidth;
-		generatedTiles.Add ((GameObject)GameObject.Instantiate (tileRight, new Vector3 (position.x, position.y), orientation));
-
-		foreach (GameObject child in generatedTiles) {
-			child.transform.parent = platform.transform;
 		}
 	}
-
-	public void Remove()
-	{
-		GameObject.Destroy (platform, 5);
-	}
-
 }
-
-
-
-
-
-
-
-
 
