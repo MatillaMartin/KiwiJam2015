@@ -24,13 +24,7 @@ public class KiwiBehaviour : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-		if (MustTurn())
-		{
-			CalculateNextDestinaton();
-			Flip();
-		}
-
+	{
         float move = facingRight ? 1.0f : -1.0f;
 
         rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
@@ -38,20 +32,21 @@ public class KiwiBehaviour : MonoBehaviour
 
     void Update()
     {
+		if (MustTurn())
+		{
+			CalculateNextDestinaton();
+			Flip();
+		}
     }
 
     void CalculateNextDestinaton()
     {
-        float nextDestinationOffset = Random.Range(-maxDestinationOffset, maxDestinationOffset);
+		float nextDestinationOffset = Random.Range(minDestinationOffset, maxDestinationOffset);
 
-        if (nextDestinationOffset < 0)
-        {
-            nextDestinationOffset = Mathf.Min(-minDestinationOffset, nextDestinationOffset);
-        }
-        else
-        {
-            nextDestinationOffset = Mathf.Max(minDestinationOffset, nextDestinationOffset);
-        }
+		if (facingRight)
+		{
+			nextDestinationOffset *= -1.0f;
+		}
 
         nextDestination = KiwiRigidbody.transform.position.x + nextDestinationOffset;
     }
