@@ -13,6 +13,8 @@ public class KiwiBehaviour : MonoBehaviour
 	[SerializeField] float v; // velocity
 	// Gameloop functions
 
+	private GameObject m_current_platform;
+
     void Start()
     {
     }
@@ -27,15 +29,11 @@ public class KiwiBehaviour : MonoBehaviour
 	    }
 		else if (!jumping)
 		{
-			Debug.Log("jump dest" + jumpDestination.ToString());
-			Debug.Log("rigidbody" + rigidbody2D.transform.position.ToString());
 			float deltaX = jumpDestination.x - rigidbody2D.transform.position.x;
 			float deltaY = jumpDestination.y - (rigidbody2D.transform.position.y - collider2D.bounds.size.y/2);
 			float g = -Physics.gravity.y;
 			float x = deltaX; // target x
 			float y = deltaY; // target y
-			Debug.Log ("x: " + x.ToString());
-			Debug.Log ("y: " + y.ToString());
 			float o = float.NaN;
 			float goodO = 0.0f;
 			float goodV = 0.0f;
@@ -48,9 +46,9 @@ public class KiwiBehaviour : MonoBehaviour
 				{
 					float s = (v * v * v * v) - g * (g * (x * x) + 2.0f * y * (v * v)); //substitution
 					o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
-					Debug.Log (v);
+					//Debug.Log (v);
 					iterations++;
-					Debug.Log (o);
+					//Debug.Log (o);
 					if(!float.IsNaN(o))
 					{
 						goodO = o;
@@ -59,10 +57,11 @@ public class KiwiBehaviour : MonoBehaviour
 
 					}
 					v -= 0.5f;
-				} while(!float.IsNaN(o) && iterations < 50);
+				} while(!float.IsNaN(o) && iterations < 50 && v > 0);
 				if(!bGotNonNan)
 				{
 					Debug.Log ("Cannot jump! need more velocity");
+					mustJump = false;
 					return;
 				}
 				else{
@@ -76,14 +75,8 @@ public class KiwiBehaviour : MonoBehaviour
 				o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
 			}
 				
-			Debug.Log ("v: " + v.ToString());
-			Debug.Log ("o: " + o.ToString());
-
 			float velocityX = (v*Mathf.Cos(o));
 			float velocityY = (v*Mathf.Sin(o));
-
-//			Debug.Log (Mathf.Sin(o));
-//			Debug.Log (Mathf.Cos(o));
 
 			rigidbody2D.velocity = new Vector2(velocityX, velocityY);
 
@@ -98,6 +91,24 @@ public class KiwiBehaviour : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
+		//Jumping waypoints
+		if (other.gameObject.layer == 8) 
+		{
+			Debug.Log(other.transform.root.gameObject);
+			Debug.Log (m_current_platform);
+			if(other.transform.root.gameObject.Equals(m_current_platform))
+			{
+				return;
+			}
+			else
+			{
+				if (!jumping)
+				{
+					jumpDestination = other.transform.parent.position;
+					mustJump = true;
+				}
+			}
+		}
 		if (!jumping)
 		{
 			if (other.tag == "PlatformLimit")
@@ -106,7 +117,7 @@ public class KiwiBehaviour : MonoBehaviour
 			}
 			else if (other.tag == "JumpTrigger")
 			{
-				jumpDestination = new Vector2(other.transform.parent.position.x, other.transform.parent.position.y);
+				jumpDestination = other.transform.parent.position;
 				mustJump = true;
 			}
 		}
@@ -114,9 +125,11 @@ public class KiwiBehaviour : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D collision) 
 	{
+		m_current_platform =  collider2D.transform.root.gameObject;
 		if (collision.collider.tag == "Platform")
 		{
 			jumping = false;
+			mustJump = false;
 		}
 	}
 
