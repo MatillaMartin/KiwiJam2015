@@ -116,6 +116,34 @@ public class Platform
 		TileTiles(start, end);
 		Remove ();
 	}
+
+	public void InstanceTiles(int nTiles)
+	{
+		generatedTiles.Clear ();
+		if (nTiles < 2) {
+			Debug.LogError ("at least 2 tiles needed");
+			return;
+		}
+		generatedTiles.Add ((GameObject)GameObject.Instantiate (tileLeft));
+		for (int i = 0; i < nTiles - 2; i++) {
+			generatedTiles.Add ((GameObject)GameObject.Instantiate (tile));
+		}
+		generatedTiles.Add ((GameObject)GameObject.Instantiate (tileRight));
+	}
+
+	public void PositionTiles(Vector2 platformStart, Vector2 platformDirection, Quaternion orientation, float tileWidth)
+	{
+		Vector2 tilePosition = platformStart;
+
+		for(int i = 0; i < generatedTiles.Count; i++)
+		{
+			tilePosition = platformStart + platformDirection.normalized*i*tileWidth;
+			generatedTiles[i].transform.position = tilePosition;
+			generatedTiles[i].transform.rotation = orientation;
+			//set as child
+			generatedTiles[i].transform.parent = platform.transform;
+		}
+	}
 	public void AddTile (GameObject tileToAdd)
 	{
 		generatedTiles.Add (tileToAdd);
@@ -134,49 +162,30 @@ public class Platform
 		RemoveTile (generatedTiles.Count - 1);
 	}
 
-//	public void DynamicConstruction(Vector2 platformStart, Vector2 platformEnd)
-//	{
-//		platform.transform.position = start;
-//		this.start = platformStart;
-//		this.end = platformEnd;
-//		//if starting and ending position are too close, then increase width to accomodate left and right tiles
-//		if ((end - start).magnitude < width) {
-//			end = start + Vector2.right*width;
-//		}
-//		bool leftToRight = start.x <= end.x;
-//		Vector2 tilingVector = end-start;
-//		float distance = tilingVector.magnitude;
-//		Quaternion orientation = Quaternion.FromToRotation(Vector2.right, tilingVector);
-//		platform.transform.rotation = orientation;
-//
-//		//nTiles that fit in distance, at least left and right (+2)
-//		int nTiles = (int)(distance / width) + 2;
-//		Debug.Log (nTiles);
-//		
-//		if (nTiles > generatedTiles.Count) 
-//		{
-//			Vector2 position = start;
-//			if(nTiles == 2)
-//			{
-//				AddTile((GameObject)GameObject.Instantiate (tileLeft, new Vector3 (position.x, position.y), orientation));
-//				AddTile((GameObject)GameObject.Instantiate (tileRight, new Vector3 (position.x, position.y), orientation));
-//			}
-//			else
-//			{
-//				//pop end tile
-//				RemoveTile(); 
-//				//add normal tiles
-//				for(int i = 0; i < generatedTiles.Coun; i++)
-//				{
-//					position = start + tilingVector.normalized*i*width;
-//					AddTile((GameObject)GameObject.Instantiate(tile, new Vector3(position.x, position.y) , orientation));
-//				}
-//
-//				//add end tile again
-//				generatedTiles.Add ((GameObject)GameObject.Instantiate (tileRight, new Vector3 (position.x, position.y), orientation));
-//			}
-//		}
-//	}
+	public void DynamicConstruction(Vector2 platformStart, Vector2 platformEnd)
+	{
+		this.start = platformStart;
+		//if starting and ending position are too close, then increase width to accomodate left and right tiles
+		if ((platformEnd - platformStart).magnitude < tileWidth) {
+			platformEnd = platformStart + Vector2.right * tileWidth;
+			this.end = platformEnd;
+		}
+
+		Vector2 tilingVector = this.end-this.start;
+		float distance = tilingVector.magnitude;
+		int nTiles = (int)(distance / this.tileWidth);
+		Debug.Log ("ntiles" + nTiles.ToString());
+
+		Quaternion orientation = Quaternion.FromToRotation(Vector2.right, tilingVector);
+		platform.transform.rotation = orientation;
+		platform.transform.position = this.start;
+		
+		if (nTiles != generatedTiles.Count) 
+		{
+			InstanceTiles(nTiles);
+			PositionTiles(this.start, this.end, orientation, tileWidth);
+		}
+	}
 
 	public void TileTiles(Vector2 platformStart, Vector2 platformEnd)
 	{
