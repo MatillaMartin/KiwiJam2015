@@ -4,54 +4,57 @@ using System.Collections;
 public class KiwiBehaviour : MonoBehaviour
 {
     public Rigidbody2D KiwiRigidbody;
-    public float maxSpeed = 10.0f;
-
-	private enum EKiwiState{KS_Walking}
-	private EKiwiState CurrentKiwiState;
+    public float velocityX = 3.0f;
 
 	private bool facingRight = true;
+	private bool jumping = false;
 
 	// Gameloop functions
 
     void Start()
     {
-		CurrentKiwiState = EKiwiState.KS_Walking;
     }
 
     // Update is called once per frame
     void FixedUpdate()
 	{
-		if (CurrentKiwiState == EKiwiState.KS_Walking)
-		{
-	        float move = facingRight ? 1.0f : -1.0f;
-
-	        rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
-		}
+        float move = facingRight ? 1.0f : -1.0f;
+		rigidbody2D.velocity = new Vector2(move * velocityX, rigidbody2D.velocity.y);
     }
 
     void Update()
     {
-
     }
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
-		if (other.tag == "PlatformLimit")
+		if (other.tag == "PlatformLimit" && !jumping)
 		{
 			Flip();
 		}
 		else if (other.tag == "JumpTrigger")
 		{
-			KiwiRigidbody.AddForce(new Vector2(0.0f, 500.0f));
+			float deltaX = Mathf.Abs(other.transform.parent.transform.position.x - rigidbody2D.transform.position.x);
+			float finalTime = deltaX / velocityX;
+
+			float velocityY = ( (-Physics.gravity.y / 2.0f * finalTime * finalTime) - (2.0f * rigidbody2D.transform.position.y) + (2.0f * other.transform.parent.transform.position.y) ) /
+								 2.0f * finalTime;
+
+			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, velocityY);
+
+			jumping = true;
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D collision) 
+	{
+		if (collision.collider.tag == "Platform")
+		{
+			jumping = false;
 		}
 	}
 
 	// Utility functions
-
-	private void GoToState(EKiwiState NewKiwiState)
-	{
-		CurrentKiwiState = NewKiwiState;
-	}
 
     private void Flip()
     {
