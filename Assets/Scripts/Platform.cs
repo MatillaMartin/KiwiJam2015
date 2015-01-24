@@ -51,7 +51,7 @@ public class Platform
 		platform.transform.position = this.start;
 
 		if (nTiles > maxBlocks) {
-						return 0;
+						return maxBlocks;
 				}
 
 		if (nTiles != generatedTiles.Count || lastEnd != end ) {

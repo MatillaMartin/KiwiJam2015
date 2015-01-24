@@ -70,9 +70,8 @@ public class PlatformFactory : MonoBehaviour {
 
 	void StartPlatform(Vector2 platformStart)
 	{
-		int maxBlocks = m_platformMaxBlocks - m_tiles.Count;
 		Debug.Log("platorm started at "); Debug.Log (platformStart);
-		m_buildingPlatform = new Platform (m_platformTile, m_platformTileLeft, m_platformTileRight, maxBlocks);
+		m_buildingPlatform = new Platform (m_platformTile, m_platformTileLeft, m_platformTileRight, m_platformMaxBlocks);
 		m_platformStart = platformStart;
 		m_bPlatformStarted = true;
 		//start event to draw line etc (TODO:visuals)
