@@ -15,37 +15,45 @@ public class KiwiBehaviour : MonoBehaviour
     void Start()
     {
         CalculateNextDestinaton();
+
+        if (maxDestinationOffset < minDestinationOffset)
+        {
+            Debug.LogWarning("maxDestinationOffset must be greater than minDestinationOffset");
+        }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        float move = facingRight ? 1 : -1;
+		if (MustTurn())
+		{
+			CalculateNextDestinaton();
+			Flip();
+		}
+
+        float move = facingRight ? 1.0f : -1.0f;
 
         rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
     }
 
     void Update()
     {
-        if (MustTurn())
-        {
-            CalculateNextDestinaton();
-            Flip();
-        }
     }
 
     void CalculateNextDestinaton()
     {
-        nextDestination = KiwiRigidbody.transform.position.x + Random.Range(-maxDestinationOffset, maxDestinationOffset);
+        float nextDestinationOffset = Random.Range(-maxDestinationOffset, maxDestinationOffset);
 
-        if (nextDestination < 0)
+        if (nextDestinationOffset < 0)
         {
-            nextDestination = Mathf.Min(minDestinationOffset, nextDestination);
+            nextDestinationOffset = Mathf.Min(-minDestinationOffset, nextDestinationOffset);
         }
         else
         {
-            nextDestination = Mathf.Max(minDestinationOffset, nextDestination);
+            nextDestinationOffset = Mathf.Max(minDestinationOffset, nextDestinationOffset);
         }
+
+        nextDestination = KiwiRigidbody.transform.position.x + nextDestinationOffset;
     }
 
     bool MustTurn()
