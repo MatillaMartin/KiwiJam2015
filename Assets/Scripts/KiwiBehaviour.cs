@@ -8,6 +8,8 @@ public class KiwiBehaviour : MonoBehaviour
 
 	private bool facingRight = true;
 	private bool jumping = false;
+	private bool mustJump = false;
+	private Vector2 jumpDestination; 
 
 	// Gameloop functions
 
@@ -18,31 +20,43 @@ public class KiwiBehaviour : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
 	{
-        float move = facingRight ? 1.0f : -1.0f;
-		rigidbody2D.velocity = new Vector2(move * velocityX, rigidbody2D.velocity.y);
-    }
+		if (!mustJump && !jumping)
+		{
+	        float move = facingRight ? 1.0f : -1.0f;
+			rigidbody2D.velocity = new Vector2(move * velocityX, rigidbody2D.velocity.y);
+	    }
+		else if (!jumping)
+		{
+			float deltaX = jumpDestination.x - rigidbody2D.transform.position.x;
+			float finalTime = 1.0f;
+			float velocityX = deltaX * finalTime;
+
+			float velocityY = ( 2.0f * (jumpDestination.y - rigidbody2D.transform.position.y + collider2D.bounds.size.y * 0.5f) - (Physics.gravity.y * finalTime) ) / 2.0f;
+
+			rigidbody2D.velocity = new Vector2(velocityX, velocityY);
+
+			mustJump = false;
+			jumping = true;
+		}
+	}
 
     void Update()
-    {
+	{
     }
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
-		if (other.tag == "PlatformLimit" && !jumping)
+		if (!jumping)
 		{
-			Flip();
-		}
-		else if (other.tag == "JumpTrigger")
-		{
-			float deltaX = Mathf.Abs(other.transform.parent.transform.position.x - rigidbody2D.transform.position.x);
-			float finalTime = deltaX / velocityX;
-
-			float velocityY = ( (-Physics.gravity.y / 2.0f * finalTime * finalTime) - (2.0f * rigidbody2D.transform.position.y) + (2.0f * other.transform.parent.transform.position.y) ) /
-								 2.0f * finalTime;
-
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, velocityY);
-
-			jumping = true;
+			if (other.tag == "PlatformLimit")
+			{
+				Flip();
+			}
+			else if (other.tag == "JumpTrigger")
+			{
+				jumpDestination = new Vector2(other.transform.parent.position.x, other.transform.parent.position.y);
+				mustJump = true;
+			}
 		}
 	}
 
