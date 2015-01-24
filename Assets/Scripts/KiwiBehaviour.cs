@@ -10,8 +10,9 @@ public class KiwiBehaviour : MonoBehaviour
     bool facingRight = true;
 
     private float nextDestination;
+	
+	// Gameloop functions
 
-    // Use this for initialization
     void Start()
     {
         CalculateNextDestinaton();
@@ -34,12 +35,20 @@ public class KiwiBehaviour : MonoBehaviour
     {
 		if (MustTurn())
 		{
-			CalculateNextDestinaton();
-			Flip();
+			Turn();
 		}
     }
+	
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "PlatformLimit")
+		{
+			Turn();
+		}
+	}
 
-    void CalculateNextDestinaton()
+	// Utility functions
+
+    private void CalculateNextDestinaton()
     {
 		float nextDestinationOffset = Random.Range(minDestinationOffset, maxDestinationOffset);
 
@@ -51,7 +60,13 @@ public class KiwiBehaviour : MonoBehaviour
         nextDestination = KiwiRigidbody.transform.position.x + nextDestinationOffset;
     }
 
-    bool MustTurn()
+	void Turn()
+	{
+		CalculateNextDestinaton();
+		Flip();
+	}
+
+    private bool MustTurn()
     {
         bool HasToTurnLeft, HasToTurnRight;
 
@@ -61,13 +76,11 @@ public class KiwiBehaviour : MonoBehaviour
         return HasToTurnLeft || HasToTurnRight;
     }
 
-    void Flip()
+    private void Flip()
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
-
-
 }
