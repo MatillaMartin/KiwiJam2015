@@ -8,6 +8,8 @@ public class PlatformFactory : MonoBehaviour {
 	private bool m_bPlatformStarted = false;
 	private Vector2 m_mousePosition;
 	private Vector2 m_platformStart, m_platformEnd;
+	
+	[SerializeField] GameObject m_platformTile;
 
 	private List<Platform> m_platforms;
 	
@@ -19,8 +21,12 @@ public class PlatformFactory : MonoBehaviour {
 	}
 
 	void Update () {
+		Vector3 worldMouse = Input.mousePosition;
+		//get point +10 points away from camera (where 2D is)
+		worldMouse.z += 10;
+		Vector3 worldPoint = Camera.main.ScreenToWorldPoint(worldMouse);
+		m_mousePosition = new Vector2(worldPoint.x, worldPoint.y); 
 
-		m_mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
 
 		//if mouse button pressed, start plataform
 		if(Input.GetButtonDown("Fire1"))
@@ -78,18 +84,50 @@ public class PlatformFactory : MonoBehaviour {
 		{
 			m_bPlatformStarted = false;	
 			Debug.Log("creating platform");
-			m_platforms.Add(new Platform(platformStart, platformEnd));
+			m_platforms.Add(new Platform(m_platformTile, platformStart, platformEnd));
 		}
 	}
 }
 
 public class Platform
 {
-	Vector2 platformStart, platformEnd;
+	Vector2 start, end;
+	GameObject tile; //tile as prefab
 
-	public Platform(Vector2 platformStart, Vector2 platformEnd)
+	List<GameObject> tiles;
+	
+	public Platform(GameObject platformTile, Vector2 platformStart, Vector2 platformEnd)
 	{
-		this.platformStart = platformStart;
-		this.platformEnd = platformEnd;
+		this.tile = platformTile;
+		this.start = platformStart;
+		this.end = platformEnd;
+		TileTiles();
+
 	}
+
+	void TileTiles()
+	{
+		Vector2 tilingVector = end-start;
+		float distance = tilingVector.magnitude;
+		Quaternion orientation = Quaternion.FromToRotation(Vector2.right, tilingVector);
+		float width = tile.GetComponent<SpriteRenderer>().renderer.bounds.size.x;
+		Debug.Log (distance);
+		Debug.Log (width);
+		for(int i = 0; i <= distance/width; i++)
+		{
+			Vector2 position = start + tilingVector.normalized*i*width;
+			GameObject.Instantiate(tile, new Vector3(position.x, position.y) , orientation);
+		}
+	}
+
+
 }
+
+
+
+
+
+
+
+
+
