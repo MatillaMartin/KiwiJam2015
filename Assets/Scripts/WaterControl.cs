@@ -12,7 +12,7 @@ public class WaterControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		waterLayers.Sort((x, y) => x.depth.CompareTo(y.depth));
-		waterLayout = new Rect (0.0f, 1.0f - waterHeightNormalized, 1.0f, 1.0f);
+		waterLayout = new Rect (0.0f, waterHeightNormalized, 1.0f, waterHeightNormalized);
 		setTides ();
 	}
 	
@@ -28,16 +28,28 @@ public class WaterControl : MonoBehaviour {
 		waterSpawn.width = waterSpawn.width * waterSpawnAreaNormalized;
 		waterSpawn.x = 0.5f - waterSpawn.width/2.0f;
 
-		Rect waterSpawnScreen = waterSpawn * new Rect(Screen.width, Screen.height, Screen.width, Screen.height);
+		Debug.Log (Screen.width);
+		Debug.Log (Screen.height);
 
+		Rect waterSpawnScreen = new Rect(
+			waterSpawn.x * Screen.width, 
+			waterSpawn.y * Screen.height, 
+			waterSpawn.width * Screen.width, 
+			waterSpawn.height * Screen.height);
 
+		Debug.Log (waterSpawnScreen);
 
 		foreach (WaterLayer layer in waterLayers) 
 		{
-			Vector2 spawnPosition = new Vector2(
+			Vector3 spawnPosition = new Vector3(
 				waterSpawnScreen.xMin + Random.Range(0.0f, 1.0f) * waterSpawnScreen.width, 
-				waterSpawnScreen.yMin + Random.Range(0.0f, 1.0f) * waterSpawnScreen.height);
-			layer.initialPosition = Camera.main.ScreenToWorldPoint(spawnPosition);
+				waterSpawnScreen.yMin - Random.Range(0.0f, 1.0f) * waterSpawnScreen.height,
+				transform.position.z);
+			Debug.Log(spawnPosition);
+
+
+
+			//layer.initialPosition = Camera.main.ScreenToWorldPoint(spawnPosition);
 			layer.revolutionSeconds = Random.Range(1.0f, 2.0f);
 			layer.circleRadius = Random.Range(0.01f, 0.2f);
 		}
