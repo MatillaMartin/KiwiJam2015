@@ -5,76 +5,53 @@ public class KiwiBehaviour : MonoBehaviour
 {
     public Rigidbody2D KiwiRigidbody;
     public float maxSpeed = 10.0f;
-    public float maxDestinationOffset = 3.0f;
-    public float minDestinationOffset = 0.5f;
-    bool facingRight = true;
 
-    private float nextDestination;
-	
+	private enum EKiwiState{KS_Walking}
+	private EKiwiState CurrentKiwiState;
+
+	private bool facingRight = true;
+
 	// Gameloop functions
 
     void Start()
     {
-        CalculateNextDestinaton();
-
-        if (maxDestinationOffset < minDestinationOffset)
-        {
-            Debug.LogWarning("maxDestinationOffset must be greater than minDestinationOffset");
-        }
+		CurrentKiwiState = EKiwiState.KS_Walking;
     }
 
     // Update is called once per frame
     void FixedUpdate()
 	{
-        float move = facingRight ? 1.0f : -1.0f;
+		if (CurrentKiwiState == EKiwiState.KS_Walking)
+		{
+	        float move = facingRight ? 1.0f : -1.0f;
 
-        rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+	        rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
+		}
     }
 
     void Update()
     {
-		if (MustTurn())
-		{
-			Turn();
-		}
+
     }
-	
-	void OnTriggerEnter(Collider other) {
+
+	void OnTriggerEnter2D(Collider2D other) 
+	{
 		if (other.tag == "PlatformLimit")
 		{
-			Turn();
+			Flip();
+		}
+		else if (other.tag == "JumpTrigger")
+		{
+			KiwiRigidbody.AddForce(new Vector2(0.0f, 500.0f));
 		}
 	}
 
 	// Utility functions
 
-    private void CalculateNextDestinaton()
-    {
-		float nextDestinationOffset = Random.Range(minDestinationOffset, maxDestinationOffset);
-
-		if (facingRight)
-		{
-			nextDestinationOffset *= -1.0f;
-		}
-
-        nextDestination = KiwiRigidbody.transform.position.x + nextDestinationOffset;
-    }
-
-	void Turn()
+	private void GoToState(EKiwiState NewKiwiState)
 	{
-		CalculateNextDestinaton();
-		Flip();
+		CurrentKiwiState = NewKiwiState;
 	}
-
-    private bool MustTurn()
-    {
-        bool HasToTurnLeft, HasToTurnRight;
-
-        HasToTurnLeft = facingRight && KiwiRigidbody.transform.position.x >= nextDestination;
-        HasToTurnRight = !facingRight && KiwiRigidbody.transform.position.x <= nextDestination;
-
-        return HasToTurnLeft || HasToTurnRight;
-    }
 
     private void Flip()
     {
