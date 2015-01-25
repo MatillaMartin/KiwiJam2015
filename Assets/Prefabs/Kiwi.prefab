@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &103108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 403108}
+  - 61: {fileID: 6103108}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &171520
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +30,6 @@ GameObject:
   - 114: {fileID: 11408520}
   - 50: {fileID: 5008520}
   - 61: {fileID: 6108520}
-  - 114: {fileID: 11476256}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -22,6 +37,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &403108
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 471520}
+  m_RootOrder: 0
 --- !u!4 &471520
 Transform:
   m_ObjectHideFlags: 1
@@ -31,7 +58,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.05999994, y: 40.2299995, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 403108}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!50 &5008520
@@ -49,6 +77,17 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!61 &6103108
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103108}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
 --- !u!61 &6108520
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -89,17 +128,6 @@ MonoBehaviour:
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
   m_maxSpeed: 0
---- !u!114 &11476256
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 171520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11497244
 MonoBehaviour:
   m_ObjectHideFlags: 1

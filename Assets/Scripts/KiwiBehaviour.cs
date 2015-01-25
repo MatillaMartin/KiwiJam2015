@@ -31,9 +31,10 @@ public class KiwiBehaviour : MonoBehaviour
 	    }
 		else if (!jumping)
 		{
-			Debug.Log ("Jumping!");
+			//Debug.Log ("Jumping!");
 			float deltaX = jumpDestination.x - rigidbody2D.transform.position.x;
 			float deltaY = jumpDestination.y - (rigidbody2D.transform.position.y - collider2D.bounds.size.y/2);
+			//Debug.Log(collider2D.bounds.size.y/2);
 			float g = -Physics.gravity.y;
 			float x = deltaX; // target x
 			float y = deltaY; // target y
@@ -46,14 +47,14 @@ public class KiwiBehaviour : MonoBehaviour
 			bool iterate = true;
 			if(iterate)
 			{
-				Debug.Log ("Iterating to find least velocity");
+				//Debug.Log ("Iterating to find least velocity");
 				do
 				{
 					float s = (v * v * v * v) - g * (g * (x * x) + 2.0f * y * (v * v)); //substitution
 					o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
-					//Debug.Log (v);
+					////Debug.Log (v);
 					iterations++;
-					//Debug.Log (o);
+					////Debug.Log (o);
 					if(!float.IsNaN(o))
 					{
 						goodO = o;
@@ -65,7 +66,7 @@ public class KiwiBehaviour : MonoBehaviour
 				} while(!float.IsNaN(o) && iterations < 50 && v > 0);
 				if(!bGotNonNan)
 				{
-					Debug.Log ("Cannot jump! need more velocity");
+					//Debug.Log ("Cannot jump! need more velocity");
 					mustJump = false;
 					return;
 				}
@@ -80,11 +81,11 @@ public class KiwiBehaviour : MonoBehaviour
 				o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
 			}
 				
-			Debug.Log(deltaX + " : " +deltaY);
+			//Debug.Log(deltaX + " : " +deltaY);
 			float velocityX = (Mathf.Sign(deltaX)*Mathf.Abs(v*Mathf.Cos(o)));
 			float velocityY = (Mathf.Sign(deltaY)*Mathf.Abs(v*Mathf.Sin(o)));
-			Debug.Log ("Set velocity yo rigidbody!");
-			Debug.Log ("velocity: " + new Vector2(velocityX, velocityY));
+			//Debug.Log ("Set velocity yo rigidbody!");
+			//Debug.Log ("velocity: " + new Vector2(velocityX, velocityY));
 			rigidbody2D.velocity = new Vector2(velocityX, velocityY);
 
 			mustJump = false;
@@ -101,11 +102,11 @@ public class KiwiBehaviour : MonoBehaviour
 		//Jumping waypoints
 		if (other.gameObject.layer == 8 && other.tag == "JumpTrigger") 
 		{
-			Debug.Log("same layer and tag");
-			Debug.Log(other.transform.root.gameObject.GetInstanceID());
-			Debug.Log(m_current_platform.GetInstanceID());
+			//Debug.Log("same layer and tag");
+			//Debug.Log(other.transform.root.gameObject);
+			//Debug.Log(m_current_platform);
 
-			if(other.transform.root.gameObject.Equals(m_current_platform))
+			if(other.transform.root.gameObject == m_current_platform)
 			{
 				return;
 			}
@@ -124,13 +125,13 @@ public class KiwiBehaviour : MonoBehaviour
 					}
 
 					Vector3 triggerNormal = other.transform.up;
-					Debug.Log ("Checking normals: " + triggerNormal);
+					//Debug.Log ("Checking normals: " + triggerNormal);
 					float dotProduct = Vector2.Dot (this.transform.right, triggerNormal);
-					Debug.Log (dotProduct);
+					//Debug.Log (dotProduct);
 					if((facingRight && dotProduct > 0.70716f) || (!facingRight && dotProduct < -0.70716f))
 					{
 
-						// Debug.Log ("Its not my platform, lets jump!");
+
 						jumpDestination = other.transform.parent.position;
 						mustJump = true;						
 					}

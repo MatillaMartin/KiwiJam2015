@@ -102,8 +102,12 @@ public class Platform
 			}
 
 			foreach (GameObject child in generatedTiles) {
-					child.transform.parent = platform.transform;
-					child.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+				child.transform.parent = platform.transform;
+				child.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+				foreach(BoxCollider2D box in child.GetComponentsInChildren<BoxCollider2D>())
+				{
+					box.enabled = false;				
+				}
 			}
 		}
 		return nTiles;
@@ -113,21 +117,25 @@ public class Platform
 	{
 		foreach (GameObject child in generatedTiles) {
 			child.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+			foreach(BoxCollider2D box in child.GetComponentsInChildren<BoxCollider2D>())
+			{
+				box.enabled = true;				
+			}
 		}
 	}
 
 	private void AddBorderTile(GameObject tilePrefab, Vector3 position, Quaternion orientation)
 	{
 		GameObject borderTile = (GameObject)GameObject.Instantiate (tilePrefab, new Vector3 (position.x, position.y), orientation);
-		BoxCollider2D collider = borderTile.AddComponent<BoxCollider2D> ();
-		collider.center = new Vector2 (collider.center.x, collider.center.y + this.tileWidth);
+		//BoxCollider2D collider = borderTile.AddComponent<BoxCollider2D> ();
+		//collider.center = new Vector2 (collider.center.x, collider.center.y + this.tileWidth);
 		generatedTiles.Add (borderTile);
 	}
 	private void AddCenterTile(GameObject tilePrefab, Vector3 position, Quaternion orientation)
 	{
 		GameObject centerTile = (GameObject)GameObject.Instantiate (tilePrefab, new Vector3 (position.x, position.y), orientation);
-		BoxCollider2D collider = centerTile.AddComponent<BoxCollider2D> ();
-		collider.center = new Vector2 (collider.center.x, collider.center.y);
+		//BoxCollider2D collider = centerTile.AddComponent<BoxCollider2D> ();
+		//collider.center = new Vector2 (collider.center.x, collider.center.y);
 		generatedTiles.Add (centerTile);
 	}
 	public void Remove()
