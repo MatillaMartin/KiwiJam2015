@@ -25,7 +25,6 @@ public class MeteoriteSpawn : MonoBehaviour {
 	
 	public void spawnMeteor()
 	{
-	Debug.Log("afasdf");
 		Instantiate(
 			Meteorite, 
 			new Vector3(Random.Range(

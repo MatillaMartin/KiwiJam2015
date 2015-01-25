@@ -1,55 +1,48 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &140208
+--- !u!1 &191250
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 440208}
-  - 212: {fileID: 21240208}
+  - 4: {fileID: 491250}
+  - 114: {fileID: 11491250}
   m_Layer: 0
-  m_Name: Tile_left
+  m_Name: PlatformFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &440208
+--- !u!4 &491250
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140208}
+  m_GameObject: {fileID: 191250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.430254, y: -2.04130673, z: 0}
-  m_LocalScale: {x: .25999999, y: .25999999, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!212 &21240208
-SpriteRenderer:
+--- !u!114 &11491250
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140208}
+  m_GameObject: {fileID: 191250}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2156a69b0ada043f8a8ee9ad41e5da2f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74340e11156a7e04297bfde909bf7036, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_platformMaxBlocks: 10
+  m_platformTile: {fileID: 143188, guid: 0d6ebe241553ed1409eca23ed5b30620, type: 2}
+  m_platformTileLeft: {fileID: 140208, guid: 6ae8a8ecc1e0e2b43baf56da844fc69f, type: 2}
+  m_platformTileRight: {fileID: 144134, guid: d0f3fffc463b7864fb5bf4142f07418c, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -59,6 +52,6 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 140208}
+  m_RootGameObject: {fileID: 191250}
   m_IsPrefabParent: 1
   m_IsExploded: 1
