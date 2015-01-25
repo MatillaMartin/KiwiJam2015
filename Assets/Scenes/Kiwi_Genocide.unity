@@ -74,6 +74,46 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &53584108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 821294557}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 53584110}
+  - 61: {fileID: 53584109}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &53584109
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 821294557}
+  m_GameObject: {fileID: 53584108}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!4 &53584110
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 821294557}
+  m_GameObject: {fileID: 53584108}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1500574115}
+  m_RootOrder: 0
 --- !u!1 &58879569
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +128,7 @@ GameObject:
   - 114: {fileID: 58879572}
   - 50: {fileID: 58879571}
   - 61: {fileID: 58879570}
+  - 58: {fileID: 58879578}
   - 114: {fileID: 58879577}
   m_Layer: 9
   m_Name: Kiwi
@@ -103,7 +144,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1565614573}
   m_GameObject: {fileID: 58879569}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -119,7 +160,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -138,7 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &58879573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,13 +249,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.7280464, y: -.810655594, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1419988177}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &58879577
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 1565614573}
   m_GameObject: {fileID: 58879569}
@@ -223,6 +265,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &58879578
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1565614573}
+  m_GameObject: {fileID: 58879569}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1001 &75410340
 Prefab:
   m_ObjectHideFlags: 0
@@ -267,6 +321,46 @@ Prefab:
   m_RootGameObject: {fileID: 1815149594}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &138113331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1248335596}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 138113332}
+  - 61: {fileID: 138113333}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &138113332
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1248335596}
+  m_GameObject: {fileID: 138113331}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2021999447}
+  m_RootOrder: 0
+--- !u!61 &138113333
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1248335596}
+  m_GameObject: {fileID: 138113331}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
 --- !u!1 &144825402
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +375,7 @@ GameObject:
   - 114: {fileID: 144825406}
   - 50: {fileID: 144825405}
   - 61: {fileID: 144825404}
+  - 58: {fileID: 144825411}
   - 114: {fileID: 144825403}
   m_Layer: 9
   m_Name: Kiwi
@@ -292,7 +387,7 @@ GameObject:
 --- !u!114 &144825403
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 1240433484}
   m_GameObject: {fileID: 144825402}
@@ -308,7 +403,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1240433484}
   m_GameObject: {fileID: 144825402}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -324,7 +419,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -343,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &144825407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,9 +508,62 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.62990189, y: -1.24497795, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1506714084}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!58 &144825411
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1240433484}
+  m_GameObject: {fileID: 144825402}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
+--- !u!1 &158123854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1319294096}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 158123856}
+  - 61: {fileID: 158123855}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &158123855
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319294096}
+  m_GameObject: {fileID: 158123854}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!4 &158123856
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1319294096}
+  m_GameObject: {fileID: 158123854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1821174718}
+  m_RootOrder: 0
 --- !u!1001 &268861953
 Prefab:
   m_ObjectHideFlags: 0
@@ -593,6 +741,7 @@ GameObject:
   - 114: {fileID: 439517637}
   - 50: {fileID: 439517636}
   - 61: {fileID: 439517635}
+  - 58: {fileID: 439517643}
   - 114: {fileID: 439517642}
   m_Layer: 9
   m_Name: Kiwi
@@ -608,7 +757,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1721048283}
   m_GameObject: {fileID: 439517634}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -624,7 +773,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -643,7 +792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &439517638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,13 +862,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.88000011, y: -1.30999994, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 920083667}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!114 &439517642
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 1721048283}
   m_GameObject: {fileID: 439517634}
@@ -728,6 +878,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &439517643
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1721048283}
+  m_GameObject: {fileID: 439517634}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1001 &538942278
 Prefab:
   m_ObjectHideFlags: 0
@@ -844,7 +1006,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 911534873}
   m_GameObject: {fileID: 555082206}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -905,11 +1067,11 @@ Transform:
   m_PrefabInternal: {fileID: 911534873}
   m_GameObject: {fileID: 605256421}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.30000019, y: 21.6299992, z: 1.89999998}
-  m_LocalScale: {x: 12.7720013, y: 1, z: 1}
+  m_LocalPosition: {x: 9.10000038, y: .129999995, z: -11.0100002}
+  m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 755874783}
-  m_RootOrder: 2
+  m_Father: {fileID: 999995974}
+  m_RootOrder: 1
 --- !u!114 &605256423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +1085,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Meteorite: {fileID: 184830, guid: a4688b74c4d444082b32a7711457417e, type: 2}
-  spawnTimerRange: {x: 4, y: 7}
 --- !u!114 &605256424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +1123,7 @@ GameObject:
   - 114: {fileID: 614213937}
   - 50: {fileID: 614213936}
   - 61: {fileID: 614213935}
+  - 58: {fileID: 614213943}
   - 114: {fileID: 614213942}
   m_Layer: 9
   m_Name: Kiwi
@@ -977,7 +1139,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 398405015}
   m_GameObject: {fileID: 614213934}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -993,7 +1155,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1012,7 +1174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &614213938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,13 +1244,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.3538857, y: -1.33189774, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1857579997}
   m_Father: {fileID: 0}
   m_RootOrder: 15
 --- !u!114 &614213942
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 398405015}
   m_GameObject: {fileID: 614213934}
@@ -1097,6 +1260,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &614213943
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 398405015}
+  m_GameObject: {fileID: 614213934}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
+--- !u!1 &692329352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 75410340}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 692329353}
+  - 61: {fileID: 692329354}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &692329353
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 75410340}
+  m_GameObject: {fileID: 692329352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1815149602}
+  m_RootOrder: 0
+--- !u!61 &692329354
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 75410340}
+  m_GameObject: {fileID: 692329352}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
 --- !u!1 &698116689
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,6 +1326,7 @@ GameObject:
   - 114: {fileID: 698116692}
   - 50: {fileID: 698116691}
   - 61: {fileID: 698116690}
+  - 58: {fileID: 698116698}
   - 114: {fileID: 698116697}
   m_Layer: 9
   m_Name: Kiwi
@@ -1126,7 +1342,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 538942278}
   m_GameObject: {fileID: 698116689}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -1142,7 +1358,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1161,7 +1377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &698116693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1231,13 +1447,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.86102486, y: -1.07127571, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1733295964}
   m_Father: {fileID: 0}
   m_RootOrder: 13
 --- !u!114 &698116697
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 538942278}
   m_GameObject: {fileID: 698116689}
@@ -1246,6 +1463,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &698116698
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 538942278}
+  m_GameObject: {fileID: 698116689}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1001 &709506783
 Prefab:
   m_ObjectHideFlags: 0
@@ -1366,10 +1595,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 555082207}
-  - {fileID: 2038897374}
-  - {fileID: 605256422}
   - {fileID: 1498184050}
   - {fileID: 845291182}
+  - {fileID: 999995974}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!82 &755874784
@@ -1503,6 +1731,46 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!1 &779798644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1713232561}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 779798645}
+  - 61: {fileID: 779798646}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &779798645
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1713232561}
+  m_GameObject: {fileID: 779798644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1443039396}
+  m_RootOrder: 0
+--- !u!61 &779798646
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1713232561}
+  m_GameObject: {fileID: 779798644}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
 --- !u!1001 &821294557
 Prefab:
   m_ObjectHideFlags: 0
@@ -1574,7 +1842,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 755874783}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!61 &845291183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1698,6 +1966,88 @@ Prefab:
   m_RootGameObject: {fileID: 755874782}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &920083666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1721048283}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 920083667}
+  - 61: {fileID: 920083668}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920083667
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1721048283}
+  m_GameObject: {fileID: 920083666}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 439517641}
+  m_RootOrder: 0
+--- !u!61 &920083668
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1721048283}
+  m_GameObject: {fileID: 920083666}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!1 &999995973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 148464, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+  m_PrefabInternal: {fileID: 911534873}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 999995974}
+  - 114: {fileID: 999995975}
+  m_Layer: 0
+  m_Name: Meteors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &999995974
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 448464, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+  m_PrefabInternal: {fileID: 911534873}
+  m_GameObject: {fileID: 999995973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .200000003, y: 21.5, z: 19.5400009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2038897374}
+  - {fileID: 605256422}
+  m_Father: {fileID: 755874783}
+  m_RootOrder: 3
+--- !u!114 &999995975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11448470, guid: 4e462d336263f4ba28abecf003e3a2d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 911534873}
+  m_GameObject: {fileID: 999995973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1612d5f85cc41159401f7b71628cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1027145322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,6 +2062,7 @@ GameObject:
   - 114: {fileID: 1027145326}
   - 50: {fileID: 1027145325}
   - 61: {fileID: 1027145324}
+  - 58: {fileID: 1027145331}
   - 114: {fileID: 1027145323}
   m_Layer: 9
   m_Name: Kiwi
@@ -1723,7 +2074,7 @@ GameObject:
 --- !u!114 &1027145323
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 399474269}
   m_GameObject: {fileID: 1027145322}
@@ -1739,7 +2090,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 399474269}
   m_GameObject: {fileID: 1027145322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -1755,7 +2106,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1774,7 +2125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &1027145327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,9 +2195,22 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.519999981, y: -1.24000001, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1197660596}
   m_Father: {fileID: 0}
   m_RootOrder: 14
+--- !u!58 &1027145331
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 399474269}
+  m_GameObject: {fileID: 1027145322}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1 &1028295218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +2319,46 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .639999986, y: .639999986}
   m_Center: {x: .639999986, y: 0}
+--- !u!1 &1069975801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 861148809}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1069975802}
+  - 61: {fileID: 1069975803}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1069975802
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 861148809}
+  m_GameObject: {fileID: 1069975801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2093118585}
+  m_RootOrder: 0
+--- !u!61 &1069975803
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 861148809}
+  m_GameObject: {fileID: 1069975801}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
 --- !u!1 &1131494012
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,6 +2513,46 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300026, guid: 41629c34ff4334ebf9e08023ceaf596f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1197660595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 399474269}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1197660596}
+  - 61: {fileID: 1197660597}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1197660596
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 399474269}
+  m_GameObject: {fileID: 1197660595}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1027145330}
+  m_RootOrder: 0
+--- !u!61 &1197660597
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 399474269}
+  m_GameObject: {fileID: 1197660595}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
 --- !u!1001 &1240433484
 Prefab:
   m_ObjectHideFlags: 0
@@ -2313,6 +2757,46 @@ Prefab:
   m_RootGameObject: {fileID: 1685089151}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1419988175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1565614573}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1419988177}
+  - 61: {fileID: 1419988176}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1419988176
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1565614573}
+  m_GameObject: {fileID: 1419988175}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!4 &1419988177
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1565614573}
+  m_GameObject: {fileID: 1419988175}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 58879576}
+  m_RootOrder: 0
 --- !u!1 &1422597098
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,6 +2873,7 @@ GameObject:
   - 114: {fileID: 1443039392}
   - 50: {fileID: 1443039391}
   - 61: {fileID: 1443039390}
+  - 58: {fileID: 1443039397}
   - 114: {fileID: 1443039389}
   m_Layer: 9
   m_Name: Kiwi
@@ -2400,7 +2885,7 @@ GameObject:
 --- !u!114 &1443039389
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 1713232561}
   m_GameObject: {fileID: 1443039388}
@@ -2416,7 +2901,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1713232561}
   m_GameObject: {fileID: 1443039388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -2432,7 +2917,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2451,7 +2936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &1443039393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2521,9 +3006,22 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.21740818, y: -.688300133, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 779798645}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!58 &1443039397
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1713232561}
+  m_GameObject: {fileID: 1443039388}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1 &1498184049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,7 +3050,7 @@ Transform:
   - {fileID: 1581093800}
   - {fileID: 1686171361}
   m_Father: {fileID: 755874783}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1 &1500574107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2567,6 +3065,7 @@ GameObject:
   - 114: {fileID: 1500574111}
   - 50: {fileID: 1500574110}
   - 61: {fileID: 1500574109}
+  - 58: {fileID: 1500574116}
   - 114: {fileID: 1500574108}
   m_Layer: 9
   m_Name: Kiwi
@@ -2578,7 +3077,7 @@ GameObject:
 --- !u!114 &1500574108
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 821294557}
   m_GameObject: {fileID: 1500574107}
@@ -2594,7 +3093,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 821294557}
   m_GameObject: {fileID: 1500574107}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -2610,7 +3109,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2629,7 +3128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &1500574112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2699,9 +3198,22 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.30779552, y: -.549132347, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 53584110}
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!58 &1500574116
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 821294557}
+  m_GameObject: {fileID: 1500574107}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1001 &1501735730
 Prefab:
   m_ObjectHideFlags: 0
@@ -2750,6 +3262,46 @@ Prefab:
   m_RootGameObject: {fileID: 713454760}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1506714082
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1240433484}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1506714084}
+  - 61: {fileID: 1506714083}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1506714083
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1240433484}
+  m_GameObject: {fileID: 1506714082}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!4 &1506714084
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1240433484}
+  m_GameObject: {fileID: 1506714082}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 144825410}
+  m_RootOrder: 0
 --- !u!1001 &1565614573
 Prefab:
   m_ObjectHideFlags: 0
@@ -2806,6 +3358,8 @@ GameObject:
   - 64: {fileID: 1581093803}
   - 23: {fileID: 1581093802}
   - 114: {fileID: 1581093801}
+  - 114: {fileID: 1581093806}
+  - 114: {fileID: 1581093805}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -2847,7 +3401,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 911534873}
   m_GameObject: {fileID: 1581093799}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -2883,6 +3437,36 @@ MeshFilter:
   m_PrefabInternal: {fileID: 911534873}
   m_GameObject: {fileID: 1581093799}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1581093805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11448464, guid: 4e462d336263f4ba28abecf003e3a2d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 911534873}
+  m_GameObject: {fileID: 1581093799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e913f554b41b4fd5b464a7bef320587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 1, g: 1, b: 1, a: 1}
+  colorPalette: []
+  lerpTime: 2
+--- !u!114 &1581093806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11448468, guid: 4e462d336263f4ba28abecf003e3a2d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 911534873}
+  m_GameObject: {fileID: 1581093799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296c80e828caa4f72aec75f8685747c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetNormalized: 0
+  fitWidth: 1
+  fitHeight: 0
 --- !u!1 &1685089151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,6 +3481,7 @@ GameObject:
   - 114: {fileID: 1685089155}
   - 50: {fileID: 1685089154}
   - 61: {fileID: 1685089153}
+  - 58: {fileID: 1685089160}
   - 114: {fileID: 1685089152}
   m_Layer: 9
   m_Name: Kiwi
@@ -2908,7 +3493,7 @@ GameObject:
 --- !u!114 &1685089152
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 1364456531}
   m_GameObject: {fileID: 1685089151}
@@ -2924,7 +3509,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1364456531}
   m_GameObject: {fileID: 1685089151}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -2940,7 +3525,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2959,7 +3544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &1685089156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3029,9 +3614,22 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.2146072, y: .703388214, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1883892547}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!58 &1685089160
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1364456531}
+  m_GameObject: {fileID: 1685089151}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1 &1686171360
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,13 +3642,14 @@ GameObject:
   - 64: {fileID: 1686171364}
   - 23: {fileID: 1686171363}
   - 114: {fileID: 1686171362}
+  - 114: {fileID: 1686171366}
   m_Layer: 0
   m_Name: ForeGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1686171361
 Transform:
   m_ObjectHideFlags: 0
@@ -3121,6 +3720,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 911534873}
   m_GameObject: {fileID: 1686171360}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1686171366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11448466, guid: 4e462d336263f4ba28abecf003e3a2d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 911534873}
+  m_GameObject: {fileID: 1686171360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296c80e828caa4f72aec75f8685747c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetNormalized: 0
+  fitWidth: 1
+  fitHeight: 0
 --- !u!1001 &1713232561
 Prefab:
   m_ObjectHideFlags: 0
@@ -3209,6 +3823,46 @@ Prefab:
   m_RootGameObject: {fileID: 439517634}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1733295963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 538942278}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1733295964}
+  - 61: {fileID: 1733295965}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1733295964
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 538942278}
+  m_GameObject: {fileID: 1733295963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 698116696}
+  m_RootOrder: 0
+--- !u!61 &1733295965
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 538942278}
+  m_GameObject: {fileID: 1733295963}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
 --- !u!1 &1773395462
 GameObject:
   m_ObjectHideFlags: 0
@@ -3263,6 +3917,7 @@ GameObject:
   - 114: {fileID: 1815149598}
   - 50: {fileID: 1815149597}
   - 61: {fileID: 1815149596}
+  - 58: {fileID: 1815149603}
   - 114: {fileID: 1815149595}
   m_Layer: 9
   m_Name: Kiwi
@@ -3274,7 +3929,7 @@ GameObject:
 --- !u!114 &1815149595
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 75410340}
   m_GameObject: {fileID: 1815149594}
@@ -3290,7 +3945,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 75410340}
   m_GameObject: {fileID: 1815149594}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -3306,7 +3961,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3325,7 +3980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &1815149599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3395,9 +4050,22 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.34649467, y: -1.24497795, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 692329353}
   m_Father: {fileID: 0}
   m_RootOrder: 16
+--- !u!58 &1815149603
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 75410340}
+  m_GameObject: {fileID: 1815149594}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1 &1821174711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3412,6 +4080,7 @@ GameObject:
   - 114: {fileID: 1821174714}
   - 50: {fileID: 1821174713}
   - 61: {fileID: 1821174712}
+  - 58: {fileID: 1821174720}
   - 114: {fileID: 1821174719}
   m_Layer: 9
   m_Name: Kiwi
@@ -3427,7 +4096,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1319294096}
   m_GameObject: {fileID: 1821174711}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -3443,7 +4112,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3462,7 +4131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &1821174715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3532,13 +4201,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.2264309, y: -.354566574, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 158123856}
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!114 &1821174719
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 1319294096}
   m_GameObject: {fileID: 1821174711}
@@ -3547,6 +4217,98 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &1821174720
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1319294096}
+  m_GameObject: {fileID: 1821174711}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
+--- !u!1 &1857579996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 398405015}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1857579997}
+  - 61: {fileID: 1857579998}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1857579997
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 398405015}
+  m_GameObject: {fileID: 1857579996}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 614213941}
+  m_RootOrder: 0
+--- !u!61 &1857579998
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 398405015}
+  m_GameObject: {fileID: 1857579996}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!1 &1883892545
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1364456531}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1883892547}
+  - 61: {fileID: 1883892546}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1883892546
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1364456531}
+  m_GameObject: {fileID: 1883892545}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!4 &1883892547
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 1364456531}
+  m_GameObject: {fileID: 1883892545}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1685089159}
+  m_RootOrder: 0
 --- !u!1 &1958540224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3601,6 +4363,7 @@ GameObject:
   - 114: {fileID: 2021999443}
   - 50: {fileID: 2021999442}
   - 61: {fileID: 2021999441}
+  - 58: {fileID: 2021999449}
   - 114: {fileID: 2021999448}
   m_Layer: 9
   m_Name: Kiwi
@@ -3616,7 +4379,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 1248335596}
   m_GameObject: {fileID: 2021999440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -3632,7 +4395,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3651,7 +4414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &2021999444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3721,13 +4484,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.49580765, y: -.615188599, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 138113332}
   m_Father: {fileID: 0}
   m_RootOrder: 8
 --- !u!114 &2021999448
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 1248335596}
   m_GameObject: {fileID: 2021999440}
@@ -3736,6 +4500,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &2021999449
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1248335596}
+  m_GameObject: {fileID: 2021999440}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
+--- !u!1 &2026776072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 103108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 709506783}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2026776074}
+  - 61: {fileID: 2026776073}
+  m_Layer: 8
+  m_Name: JumpingCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &2026776073
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6103108, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 709506783}
+  m_GameObject: {fileID: 2026776072}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Size: {x: 8, y: 8}
+  m_Center: {x: 0, y: 2.5}
+--- !u!4 &2026776074
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 403108, guid: 2f89d8687a1aa48baa09168fb553792f, type: 2}
+  m_PrefabInternal: {fileID: 709506783}
+  m_GameObject: {fileID: 2026776072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .370000005, y: 0, z: -4.26999998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2077303800}
+  m_RootOrder: 0
 --- !u!1 &2038897370
 GameObject:
   m_ObjectHideFlags: 0
@@ -3767,7 +4583,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Meteorite: {fileID: 184830, guid: a4688b74c4d444082b32a7711457417e, type: 2}
-  spawnTimerRange: {x: 5, y: 8}
 --- !u!114 &2038897372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3799,11 +4614,11 @@ Transform:
   m_PrefabInternal: {fileID: 911534873}
   m_GameObject: {fileID: 2038897370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.98999977, y: 21.6299992, z: 1.89999998}
-  m_LocalScale: {x: 12.7720013, y: 1, z: 1}
+  m_LocalPosition: {x: -10.1899996, y: .129999995, z: -11.0100002}
+  m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 755874783}
-  m_RootOrder: 1
+  m_Father: {fileID: 999995974}
+  m_RootOrder: 0
 --- !u!1 &2055340547
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +4661,7 @@ GameObject:
   - 114: {fileID: 2077303796}
   - 50: {fileID: 2077303795}
   - 61: {fileID: 2077303794}
+  - 58: {fileID: 2077303802}
   - 114: {fileID: 2077303801}
   m_Layer: 9
   m_Name: Kiwi
@@ -3861,7 +4677,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 709506783}
   m_GameObject: {fileID: 2077303793}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -3877,7 +4693,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3896,7 +4712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &2077303797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3966,13 +4782,14 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.94903946, y: -.940965652, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2026776074}
   m_Father: {fileID: 0}
   m_RootOrder: 12
 --- !u!114 &2077303801
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 709506783}
   m_GameObject: {fileID: 2077303793}
@@ -3981,6 +4798,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &2077303802
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 709506783}
+  m_GameObject: {fileID: 2077303793}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}
 --- !u!1 &2093118578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3995,6 +4824,7 @@ GameObject:
   - 114: {fileID: 2093118581}
   - 50: {fileID: 2093118580}
   - 61: {fileID: 2093118579}
+  - 58: {fileID: 2093118588}
   - 114: {fileID: 2093118587}
   - 114: {fileID: 2093118586}
   m_Layer: 9
@@ -4011,7 +4841,7 @@ BoxCollider2D:
     type: 2}
   m_PrefabInternal: {fileID: 861148809}
   m_GameObject: {fileID: 2093118578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
@@ -4027,7 +4857,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 1
-  m_FixedAngle: 0
+  m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -4046,7 +4876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
   velocityX: 3
-  m_maxSpeed: 0
+  m_maxSpeed: 16
 --- !u!114 &2093118582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4116,7 +4946,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.71375513, y: -.810655594, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1069975802}
   m_Father: {fileID: 0}
   m_RootOrder: 10
 --- !u!114 &2093118586
@@ -4133,7 +4964,7 @@ MonoBehaviour:
 --- !u!114 &2093118587
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11476256, guid: 2f89d8687a1aa48baa09168fb553792f,
+  m_PrefabParentObject: {fileID: 11407022, guid: 2f89d8687a1aa48baa09168fb553792f,
     type: 2}
   m_PrefabInternal: {fileID: 861148809}
   m_GameObject: {fileID: 2093118578}
@@ -4142,3 +4973,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &2093118588
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5873650, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 861148809}
+  m_GameObject: {fileID: 2093118578}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .920000017
+  m_Center: {x: .230000004, y: .0399999991}

@@ -50,7 +50,7 @@ GameObject:
   - 50: {fileID: 5086548}
   - 61: {fileID: 6186548}
   - 95: {fileID: 9586548}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}

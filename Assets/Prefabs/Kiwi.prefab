@@ -31,6 +31,7 @@ GameObject:
   - 50: {fileID: 5008520}
   - 61: {fileID: 6108520}
   - 58: {fileID: 5873650}
+  - 114: {fileID: 11407022}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -126,6 +127,17 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11407022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11408520
 MonoBehaviour:
   m_ObjectHideFlags: 1
