@@ -37,7 +37,6 @@ public class Shark : MonoBehaviour {
 		transform.localScale = theScale;
 		rigidbody2D.AddForce(new Vector2(0, jumpForce));
 		anim.SetTrigger ("Attack");
-		
 	}
 
 	// Update is called once per frame
@@ -52,7 +51,8 @@ public class Shark : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if(sharkIsRising())
 		{
-			other.gameObject.SendMessage("Die");
+			Debug.Log("other.name = " + other.name);
+			other.SendMessage("Die");
 		}
 	}
 	
