@@ -10,10 +10,12 @@ public class KiwiBehaviour : MonoBehaviour
 	private bool jumping = false;
 	private bool mustJump = false;
 	private Vector2 jumpDestination; 
-	[SerializeField] float v; // velocity
+	[SerializeField] float m_maxSpeed; // velocity
 	// Gameloop functions
 
 	private GameObject m_current_platform;
+
+	private bool bCheckStayTrigger = false;
 
     void Start()
     {
@@ -29,11 +31,13 @@ public class KiwiBehaviour : MonoBehaviour
 	    }
 		else if (!jumping)
 		{
+			Debug.Log ("Jumping!");
 			float deltaX = jumpDestination.x - rigidbody2D.transform.position.x;
 			float deltaY = jumpDestination.y - (rigidbody2D.transform.position.y - collider2D.bounds.size.y/2);
 			float g = -Physics.gravity.y;
 			float x = deltaX; // target x
 			float y = deltaY; // target y
+			float v = m_maxSpeed;
 			float o = float.NaN;
 			float goodO = 0.0f;
 			float goodV = 0.0f;
@@ -42,6 +46,7 @@ public class KiwiBehaviour : MonoBehaviour
 			bool iterate = true;
 			if(iterate)
 			{
+				Debug.Log ("Iterating to find least velocity");
 				do
 				{
 					float s = (v * v * v * v) - g * (g * (x * x) + 2.0f * y * (v * v)); //substitution
@@ -75,9 +80,11 @@ public class KiwiBehaviour : MonoBehaviour
 				o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
 			}
 				
-			float velocityX = (v*Mathf.Cos(o));
-			float velocityY = (v*Mathf.Sin(o));
-
+			Debug.Log(deltaX + " : " +deltaY);
+			float velocityX = (Mathf.Sign(deltaX)*Mathf.Abs(v*Mathf.Cos(o)));
+			float velocityY = (Mathf.Sign(deltaY)*Mathf.Abs(v*Mathf.Sin(o)));
+			Debug.Log ("Set velocity yo rigidbody!");
+			Debug.Log ("velocity: " + new Vector2(velocityX, velocityY));
 			rigidbody2D.velocity = new Vector2(velocityX, velocityY);
 
 			mustJump = false;
@@ -89,13 +96,11 @@ public class KiwiBehaviour : MonoBehaviour
 	{
     }
 
-	void OnTriggerEnter2D(Collider2D other) 
+	void shouldJump(Collider2D other)
 	{
 		//Jumping waypoints
-		if (other.gameObject.layer == 8) 
+		if (other.gameObject.layer == 8 && other.tag == "JumpTrigger") 
 		{
-			Debug.Log(other.transform.root.gameObject);
-			Debug.Log (m_current_platform);
 			if(other.transform.root.gameObject.Equals(m_current_platform))
 			{
 				return;
@@ -104,29 +109,56 @@ public class KiwiBehaviour : MonoBehaviour
 			{
 				if (!jumping)
 				{
-					jumpDestination = other.transform.parent.position;
-					mustJump = true;
+					if((facingRight && this.transform.position.x > other.transform.position.x) ||
+					   (!facingRight && this.transform.position.x < other.transform.position.x))
+					{
+						return;
+					}
+
+					Vector3 triggerNormal = other.transform.up;
+					Debug.Log ("Checking normals: " + triggerNormal);
+					float dotProduct = Vector2.Dot (this.transform.right, triggerNormal);
+					Debug.Log (dotProduct);
+					if((facingRight && dotProduct > 0.70716f) || (!facingRight && dotProduct < -0.70716f))
+					{
+
+						Debug.Log ("Its not my platform, lets jump!");
+						jumpDestination = other.transform.parent.position;
+						mustJump = true;						
+					}
 				}
 			}
 		}
-		if (!jumping)
+	}
+	
+	void OnTriggerEnter2D(Collider2D other) 
+	{
+		shouldJump (other);
+		if(other.gameObject.layer != 8)
 		{
-			if (other.tag == "PlatformLimit")
+			if (!jumping)
 			{
-				Flip();
-			}
-			else if (other.tag == "JumpTrigger")
-			{
-				jumpDestination = other.transform.parent.position;
-				mustJump = true;
+				if (other.tag == "PlatformLimit")
+				{
+					Flip();
+				}
 			}
 		}
 	}
-
-	void OnCollisionEnter2D(Collision2D collision) 
+	void OnTriggerStay2D(Collider2D other)
 	{
-		m_current_platform =  collider2D.transform.root.gameObject;
-		if (collision.collider.tag == "Platform")
+		//may slow down app
+		if(bCheckStayTrigger)
+		{
+			bCheckStayTrigger = false;
+			shouldJump (other);
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other) 
+	{
+		m_current_platform = other.transform.root.gameObject;
+		if (other.collider.tag == "Platform")
 		{
 			jumping = false;
 			mustJump = false;
@@ -138,6 +170,7 @@ public class KiwiBehaviour : MonoBehaviour
     private void Flip()
     {
         facingRight = !facingRight;
+		bCheckStayTrigger = true;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;

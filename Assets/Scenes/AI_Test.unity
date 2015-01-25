@@ -312,7 +312,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 384702138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.59000003, y: 40.7400017, z: 0}
+  m_LocalPosition: {x: -4.65999985, y: 40.5099983, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1290419489}
@@ -572,7 +572,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1125001099}
   - 61: {fileID: 1125001100}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: JumpTrigger
   m_TagString: JumpTrigger
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1596747809}
   - 61: {fileID: 1596747810}
-  m_Layer: 9
+  m_Layer: 8
   m_Name: JumpTrigger
   m_TagString: JumpTrigger
   m_Icon: {fileID: 0}
