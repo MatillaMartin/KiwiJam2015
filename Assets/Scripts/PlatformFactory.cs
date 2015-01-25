@@ -86,15 +86,24 @@ public class PlatformFactory : MonoBehaviour {
 		nBlocksBuilding = Mathf.Min (nBlocksBuilding, m_tiles.Count);
 		Debug.Log (m_tiles.Count);
 		Debug.Log (nBlocksBuilding);
-		for (int i = 0; i < m_tiles.Count; i++) 
+
+		int blocksNeeded = nBlocksBuilding + m_tiles.Count - m_platformMaxBlocks;
+
+		m_buildingBlocks = 0;
+
+		if(blocksNeeded > 0)
 		{
-			m_tiles[i].GetComponent<SpriteRenderer>().color = new Color(1.0f,1.0f,1.0f);
+
+			for (int i = 0; i < m_tiles.Count; i++) 
+			{
+				m_tiles[i].GetComponent<SpriteRenderer>().color = new Color(1.0f,1.0f,1.0f);
+			}
+			for (int i = 0; i < blocksNeeded; i++) 
+			{
+				m_tiles[i].GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+			}
+			m_buildingBlocks = blocksNeeded;
 		}
-		for (int i = 0; i < nBlocksBuilding; i++) 
-		{
-			m_tiles[i].GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-		}
-		m_buildingBlocks = nBlocksBuilding;
 	}
 
 	void CancelPlatform()
@@ -116,6 +125,7 @@ public class PlatformFactory : MonoBehaviour {
 				GameObject.Destroy(m_tiles[i]);
 			}
 			Debug.Log("tiles after :" + m_tiles.Count.ToString());
+
 			m_tiles.RemoveRange(0,m_buildingBlocks);
 			m_tiles.AddRange(m_buildingPlatform.getTiles());
 			
