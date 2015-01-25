@@ -3,20 +3,22 @@ using System.Collections;
 
 public class KiwiBehaviour : MonoBehaviour
 {
-   // public Rigidbody2D KiwiRigidbody;
+    public Rigidbody2D KiwiRigidbody;
     public float velocityX = 3.0f;
-    private bool facingLeft = true;
 
+	private bool facingRight = false;
 	private bool jumping = false;
 	private bool mustJump = false;
 	private Vector2 jumpDestination; 
-	private Animator anim;
-
+	[SerializeField] float m_maxSpeed; // velocity
 	// Gameloop functions
+
+	private GameObject m_current_platform;
+
+	private bool bCheckStayTrigger = false;
 
     void Start()
     {
-   		anim = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,75 +26,171 @@ public class KiwiBehaviour : MonoBehaviour
 	{
 		if (!mustJump && !jumping)
 		{
-	        float move = facingLeft ? -1.0f : 1.0f;
+	        float move = facingRight ? 1.0f : -1.0f;
 			rigidbody2D.velocity = new Vector2(move * velocityX, rigidbody2D.velocity.y);
 	    }
 		else if (!jumping)
 		{
+			Debug.Log ("Jumping!");
 			float deltaX = jumpDestination.x - rigidbody2D.transform.position.x;
-			float finalTime = 1.0f;
-			float velocityX = deltaX * finalTime;
+			float deltaY = jumpDestination.y - (rigidbody2D.transform.position.y - collider2D.bounds.size.y/2);
+			float g = -Physics.gravity.y;
+			float x = deltaX; // target x
+			float y = deltaY; // target y
+			float v = m_maxSpeed;
+			float o = float.NaN;
+			float goodO = 0.0f;
+			float goodV = 0.0f;
+			bool bGotNonNan = false;
+			int iterations = 0;
+			bool iterate = true;
+			if(iterate)
+			{
+				Debug.Log ("Iterating to find least velocity");
+				do
+				{
+					float s = (v * v * v * v) - g * (g * (x * x) + 2.0f * y * (v * v)); //substitution
+					o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
+					//Debug.Log (v);
+					iterations++;
+					//Debug.Log (o);
+					if(!float.IsNaN(o))
+					{
+						goodO = o;
+						goodV = v;
+						bGotNonNan = true;
 
-			float velocityY = ( 2.0f * (jumpDestination.y - rigidbody2D.transform.position.y + collider2D.bounds.size.y * 0.5f) - (Physics.gravity.y * finalTime) ) / 2.0f;
-
+					}
+					v -= 0.5f;
+				} while(!float.IsNaN(o) && iterations < 50 && v > 0);
+				if(!bGotNonNan)
+				{
+					Debug.Log ("Cannot jump! need more velocity");
+					mustJump = false;
+					return;
+				}
+				else{
+					o = goodO;
+					v = goodV;
+				}
+			}
+			else
+			{
+				float s = (v * v * v * v) - g * (g * (x * x) + 2.0f * y * (v * v)); //substitution
+				o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
+			}
+				
+			Debug.Log(deltaX + " : " +deltaY);
+			float velocityX = (Mathf.Sign(deltaX)*Mathf.Abs(v*Mathf.Cos(o)));
+			float velocityY = (Mathf.Sign(deltaY)*Mathf.Abs(v*Mathf.Sin(o)));
+			Debug.Log ("Set velocity yo rigidbody!");
+			Debug.Log ("velocity: " + new Vector2(velocityX, velocityY));
 			rigidbody2D.velocity = new Vector2(velocityX, velocityY);
 
 			mustJump = false;
-			setJumping(true);
+			jumping = true;
 		}
-		
-		if(rigidbody2D.velocity.x > 0.0f && facingLeft)
-			Flip ();
-		else if (rigidbody2D.velocity.x < 0.0f && !facingLeft)
-			Flip();
-			
-		anim.SetFloat("VerticalVelocity", rigidbody2D.velocity.y);
-	}
-	
-	
-	void Flip()
-	{
-		facingLeft = !facingLeft;
-		Vector3 theScale = transform.localScale;
-		theScale.x *= -1;
-		transform.localScale = theScale;
-		
 	}
 
     void Update()
 	{
     }
 
+	void shouldJump(Collider2D other)
+	{
+		//Jumping waypoints
+		if (other.gameObject.layer == 8 && other.tag == "JumpTrigger") 
+		{
+			Debug.Log("same layer and tag");
+			Debug.Log(other.transform.root.gameObject.GetInstanceID());
+			Debug.Log(m_current_platform.GetInstanceID());
+
+			if(other.transform.root.gameObject.Equals(m_current_platform))
+			{
+				Debug.Log("my platform");
+				return;
+			}
+			else
+			{
+				if (!jumping)
+				{
+					if(this.transform.position.y > other.transform.position.y)
+					{
+						return;
+					}
+					if((facingRight && this.transform.position.x > other.transform.position.x) ||
+					   (!facingRight && this.transform.position.x < other.transform.position.x))
+					{
+						return;
+					}
+
+					Vector3 triggerNormal = other.transform.up;
+					Debug.Log ("Checking normals: " + triggerNormal);
+					float dotProduct = Vector2.Dot (this.transform.right, triggerNormal);
+					Debug.Log (dotProduct);
+					if((facingRight && dotProduct > 0.70716f) || (!facingRight && dotProduct < -0.70716f))
+					{
+
+						Debug.Log ("Its not my platform, lets jump!");
+						jumpDestination = other.transform.parent.position;
+						mustJump = true;						
+					}
+				}
+			}
+		}
+	}
+	
 	void OnTriggerEnter2D(Collider2D other) 
 	{
-		if (!jumping)
+		shouldJump (other);
+		if(other.gameObject.layer != 8)
 		{
-			if (other.tag == "PlatformLimit")
+			if (!jumping)
 			{
-				Flip();
+				if (other.tag == "PlatformLimit")
+				{
+					Flip();
+				}
 			}
-			else if (other.tag == "JumpTrigger")
+		}
+	}
+	void OnTriggerStay2D(Collider2D other)
+	{
+		//may slow down app
+		if(bCheckStayTrigger)
+		{
+			Debug.Log ("Checking stay");
+			if(other.transform.root.gameObject.Equals(m_current_platform))
 			{
-				jumpDestination = new Vector2(other.transform.parent.position.x, other.transform.parent.position.y);
-				mustJump = true;
+				Debug.Log("my platform");
+				return;
+			}
+			else
+			{
+				bCheckStayTrigger = false;
+				shouldJump (other);
 			}
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) 
+	void OnCollisionEnter2D(Collision2D other) 
 	{
-		if (collision.collider.tag == "Platform")
+		m_current_platform = other.transform.root.gameObject;
+		if (other.collider.tag == "Platform")
 		{
-			setJumping(false);
+			jumping = false;
+			mustJump = false;
 		}
-	}
-	
-	void setJumping(bool isJumping)
-	{
-		jumping = isJumping;
-		anim.SetBool("Jumping", jumping);
 	}
 
 	// Utility functions
 
+    private void Flip()
+    {
+        facingRight = !facingRight;
+		bCheckStayTrigger = true;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
 }
