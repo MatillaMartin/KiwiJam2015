@@ -32,6 +32,7 @@ GameObject:
   - 61: {fileID: 6108520}
   - 58: {fileID: 5873650}
   - 114: {fileID: 11407022}
+  - 82: {fileID: 8200766}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -112,6 +113,64 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 1.45000005, y: 1.38999999}
   m_Center: {x: .25, y: -.170000002}
+--- !u!82 &8200766
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171520}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!95 &9571520
 Animator:
   serializedVersion: 3
@@ -168,7 +227,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
