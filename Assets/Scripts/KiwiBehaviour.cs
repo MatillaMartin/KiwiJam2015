@@ -5,7 +5,7 @@ public class KiwiBehaviour : MonoBehaviour
 {
     public Rigidbody2D KiwiRigidbody;
     public float velocityX = 3.0f;
-
+	public float lastFlipTime = 0.0f;
 	private bool facingRight = false;
 	private bool jumping = false;
 	private bool mustJump = false;
@@ -179,9 +179,15 @@ public class KiwiBehaviour : MonoBehaviour
 		{
 			jumping = false;
 			mustJump = false;
-			if (Mathf.Abs(Vector2.Dot(other.transform.up, transform.up)) < 0.4)
+			if(Mathf.Abs(Vector2.Dot (other.transform.up, transform.up)) < 0.2f)
 			{
-				Flip();
+				//Debug.Log ("flipping!!!! : " + Mathf.Abs(Vector2.Dot (other.transform.up, transform.up)));
+				float timeFilter = 0.2f;
+				if(Time.timeSinceLevelLoad > lastFlipTime + timeFilter)
+				{
+					lastFlipTime = Time.timeSinceLevelLoad;
+					Flip ();
+				}
 			}
 		}
 	}
