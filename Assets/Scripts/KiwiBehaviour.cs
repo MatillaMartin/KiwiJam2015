@@ -179,6 +179,10 @@ public class KiwiBehaviour : MonoBehaviour
 		{
 			jumping = false;
 			mustJump = false;
+			if (Mathf.Abs(Vector2.Dot(other.transform.up, transform.up)) < 0.4)
+			{
+				Flip();
+			}
 		}
 	}
 
