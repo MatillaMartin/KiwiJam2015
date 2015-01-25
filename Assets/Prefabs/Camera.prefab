@@ -753,6 +753,9 @@ MonoBehaviour:
   jumpForce: 500
   attackTimerRange: {x: 5, y: 10}
   sharkSpawn: {fileID: 142144}
+  attackAudioClips: []
+  riseAudioClip: {fileID: 0}
+  sinkAudioClip: {fileID: 0}
 --- !u!114 &11442144
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -864,9 +867,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c80e828caa4f72aec75f8685747c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionOffsetNormalized: {x: 0, y: 0}
   offsetNormalized: 0
   fitWidth: 1
   fitHeight: 0
+  toCameraPosY: 0
+  toCameraPosX: 1
 --- !u!114 &11448468
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -878,9 +884,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 296c80e828caa4f72aec75f8685747c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionOffsetNormalized: {x: 0, y: 0}
   offsetNormalized: 0
   fitWidth: 1
   fitHeight: 0
+  toCameraPosY: 0
+  toCameraPosX: 1
 --- !u!114 &11448470
 MonoBehaviour:
   m_ObjectHideFlags: 1
