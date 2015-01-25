@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BackgroundTint : MonoBehaviour {
 	public Color[] colorPalette;
-	public float lerpTime = 20.0f;
-	private float timer = 20.0f;
+	public float lerpTime = 2.0f;
+	private float timer = 2.0f;
 	private Color fromColor;
 	private Color targetColor;
 	
