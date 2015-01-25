@@ -13,7 +13,7 @@ GameObject:
   - 95: {fileID: 9584830}
   - 114: {fileID: 11474754}
   - 50: {fileID: 5080650}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Meteorite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,6 +85,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 5
+  fallingAudioClip: {fileID: 0}
+  impactAudioClip: {fileID: 0}
+  onWaterEnterAudioClip: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!212 &21284830
 SpriteRenderer:
   m_ObjectHideFlags: 1

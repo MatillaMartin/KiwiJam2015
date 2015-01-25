@@ -4,6 +4,11 @@
 TagManager:
   tags:
   - 
+  - Platform
+  - PlatformLimit
+  - JumpTrigger
+  - Kiwi
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -15,8 +20,8 @@ TagManager:
   User Layer 8: JumpingLayer
   User Layer 9: KiwiLayer
   User Layer 10: PlatformLimit
-  User Layer 11: 
-  User Layer 12: 
+  User Layer 11: SharkLayer
+  User Layer 12: MeteoriteLayer
   User Layer 13: 
   User Layer 14: 
   User Layer 15: 
