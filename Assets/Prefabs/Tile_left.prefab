@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6142986}
   m_Layer: 10
   m_Name: Tile_left
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +74,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
-  - {fileID: 465102}
   - {fileID: 465100}
+  - {fileID: 465102}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &465100
@@ -90,7 +90,7 @@ Transform:
   m_Children:
   - {fileID: 465104}
   m_Father: {fileID: 440208}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!4 &465102
 Transform:
   m_ObjectHideFlags: 1
@@ -102,7 +102,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 440208}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &465104
 Transform:
   m_ObjectHideFlags: 1
@@ -135,8 +135,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: .5, y: 2}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: .5, y: 3}
+  m_Center: {x: 0, y: .5}
 --- !u!61 &6165104
 BoxCollider2D:
   m_ObjectHideFlags: 1
