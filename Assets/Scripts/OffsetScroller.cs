@@ -4,7 +4,8 @@ using System.Collections;
 public class OffsetScroller : MonoBehaviour {
 	public bool tileable;
 	public float scrollSpeed;
-
+	public FollowCamera paralax;
+	
 	private Vector2 savedOffset;
 	public bool stopAtNextLoop;
 	private bool stopped = false;
@@ -30,6 +31,7 @@ public class OffsetScroller : MonoBehaviour {
 		if (stopAtNextLoop) {
 			if(	Mathf.Abs(renderer.sharedMaterial.GetTextureOffset("_MainTex").y - savedOffset.y) < 0.005f )
 			{
+				paralax.follow = false;
 				renderer.sharedMaterial.SetTextureOffset("_MainTex", savedOffset);
 				stopAtNextLoop = false;
 				Camera.main.GetComponent<CameraMovement>().cameraSpeed = scrollSpeed * 10.0f;

@@ -49,7 +49,7 @@ public class GameEngine : MonoBehaviour {
 			if(levelTime < 0.0f)
 			{
 				levelWin = true;
-				backGround.stopAtNextLoop = true;	
+				backGround.stopAtNextLoop = true;
 			}
 			else
 			{
