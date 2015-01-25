@@ -3,7 +3,7 @@ using System.Collections;
 
 public class KiwiAudioControl : MonoBehaviour {
 	public AudioClip[] audioSamples;
-	public AudioClip[] kiwiDiedSamples; // u, w, 1, 2, 3
+	public AudioClip[] kiwiDiedSamples; // 1w, 2, 3, pops
 	public AudioSource audioSource;
 	public Vector2 audioPlayTimeRange = new Vector2(7.0f, 10.0f);
 	private float audioPlayTimer;
@@ -12,7 +12,8 @@ public class KiwiAudioControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audioPlayTimer = Random.Range(audioPlayTimeRange.x, audioPlayTimeRange.y);
-		audioSource = Camera.main.GetComponent<AudioSource>();
+		//audioSource = Camera.main.GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame

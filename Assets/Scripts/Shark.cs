@@ -8,12 +8,17 @@ public class Shark : MonoBehaviour {
 	private float attackTimer = 5.0f;
 	public GameObject sharkSpawn;
 	private Vector2 spawnRange;
+	private AudioSource audioSource;
 
-
+	public AudioClip[] attackAudioClips;
+	public AudioClip riseAudioClip;
+	public AudioClip sinkAudioClip;
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
+		//audioSource = Camera.main.GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
 		spawnRange = new Vector2(sharkSpawn.collider2D.bounds.min.x, sharkSpawn.collider2D.bounds.max.x);
 	}
 	
@@ -30,7 +35,13 @@ public class Shark : MonoBehaviour {
 		}
 	}
 
-	void sharkAttack(){
+	void sharkAttack()
+	{
+		if (riseAudioClip)
+		{
+			audioSource.PlayOneShot(riseAudioClip);
+		}
+
 		Vector3 newPosition = new Vector3(Random.Range(spawnRange.x, spawnRange.y), sharkSpawn.transform.position.y, transform.position.z);
 		transform.position = newPosition;
 		rigidbody2D.velocity = new Vector2(0.0f, 0.0f);
@@ -51,10 +62,21 @@ public class Shark : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D other) {
-		if(sharkIsRising())
+		if (other.gameObject.tag == "Kiwi" && sharkIsRising())
 		{
+			if (attackAudioClips.Length > 0)
+			{
+				audioSource.PlayOneShot(attackAudioClips[Random.Range(0, attackAudioClips.Length)]);
+			}
 			Debug.Log("other.name = " + other.name);
 			other.SendMessage("Die");
+		}
+		else if (other.gameObject.name == "WaterCollision")
+		{
+			if (sinkAudioClip)
+			{
+				audioSource.PlayOneShot(sinkAudioClip);
+			}
 		}
 	}
 	

@@ -12,7 +12,8 @@ public class DieAfterSeconds : MonoBehaviour {
 	
 	void Awake()
 	{
-		audioSource = Camera.main.GetComponent<AudioSource>();
+		//audioSource = Camera.main.GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
 		currentTime = 0.0f;
 
 		if (fallingAudioClip)
