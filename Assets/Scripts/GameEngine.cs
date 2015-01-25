@@ -19,7 +19,7 @@ public class GameEngine : MonoBehaviour {
 	public AudioClip[] meteorLeftMessage;
 	public AudioClip[] meteorRightMessage;
 	
-	private int kiwiCount = 20;
+	public int kiwiCount = 10;
 	
 	public MeteorControl meteorControl;
 	public Shark sharkControl;
@@ -91,14 +91,16 @@ public class GameEngine : MonoBehaviour {
 	void startMeteorMessage()
 	{
 		if(meteorSideLeft)
-			audioSource.PlayOneShot(meteorLeftMessage[Random.Range(0, meteorLeftMessage.Length - 1)]);
+			audioSource.PlayOneShot(meteorLeftMessage[Random.Range(0, meteorLeftMessage.Length - 1)], 10.0f);
 		else
-			audioSource.PlayOneShot(meteorRightMessage[Random.Range (0, meteorRightMessage.Length - 1)]);
+			audioSource.PlayOneShot(meteorRightMessage[Random.Range (0, meteorRightMessage.Length - 1)], 10.0f);
 	}
 	
 	
 	public void ReportDeath()
 	{
 		kiwiCount--;
+		if(kiwiCount == 0)
+			Application.LoadLevel(0);
 	}
 }

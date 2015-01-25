@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.05999994, y: 40.2299995, z: 4.26999998}
+  m_LocalPosition: {x: 1.69000006, y: 8.44999981, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 403108}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 12, y: 8}
   m_Center: {x: 0, y: 2.5}
 --- !u!61 &6108520
 BoxCollider2D:
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLogic: {fileID: 0}
 --- !u!114 &11408520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,7 +210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   KiwiRigidbody: {fileID: 0}
-  velocityX: 3
+  velocityX: 5
+  lastFlipTime: 0
   m_maxSpeed: 16
 --- !u!114 &11497244
 MonoBehaviour:
