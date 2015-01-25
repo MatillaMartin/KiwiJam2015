@@ -27,6 +27,7 @@ public class Platform
 	
 	public int DynamicConstruction(Vector2 platformStart, Vector2 platformEnd)
 	{
+		bool leftToRight = true;
 		lastEnd = end;
 		this.start = platformStart;
 		this.end = platformEnd;
@@ -46,40 +47,64 @@ public class Platform
 		Debug.Log ("ntiles " + nTiles.ToString());
 		Debug.Log ("tilecount " + generatedTiles.Count.ToString());
 
-		Vector2 finalRightVector = Vector2.Dot(Vector2.right, tilingVector) > 0 ? Vector2.right : -Vector2.right;
+		Vector2 finalRightVector = Vector2.right;
+		if (Vector2.Dot (Vector2.right, tilingVector) < 0) 
+		{
+			finalRightVector = -Vector2.right;
+			leftToRight = false;
+		}
+
+		//Vector2 finalRightVector = Vector2.Dot(Vector2.right, tilingVector) > 0 ? Vector2.right : -Vector2.right;
 
 		Quaternion orientation = Quaternion.FromToRotation(finalRightVector, tilingVector);
 		platform.transform.rotation = orientation;
 		platform.transform.position = this.start;
 
-		if (nTiles > maxBlocks) {
-						return maxBlocks;
-				}
+		if (nTiles > maxBlocks) 
+		{
+			return maxBlocks;
+		}
 
-		if (nTiles != generatedTiles.Count || lastEnd != end ) {
-				Debug.Log ("generating tiles");
-				//			InstanceTiles(nTiles);
-				//			PositionTiles(this.start, this.end, orientation, tileWidth);
-				foreach (GameObject go in generatedTiles) {
-						GameObject.Destroy (go);
-				}
-				generatedTiles.Clear ();
-				Vector2 position = start;
-
+		if (nTiles != generatedTiles.Count || lastEnd != end ) 
+		{
+			Debug.Log ("generating tiles");
+			//			InstanceTiles(nTiles);
+			//			PositionTiles(this.start, this.end, orientation, tileWidth);
+			foreach (GameObject go in generatedTiles) {
+					GameObject.Destroy (go);
+			}
+			generatedTiles.Clear ();
+			Vector2 position = start;
+			
+			if(leftToRight)
+			{
 				AddBorderTile (tileLeft, position, orientation);
-
-				for (int i = 1; i < nTiles-1; i++) {
-						position = start + tilingVector.normalized * i * tileWidth;
-						AddCenterTile (tile, position, orientation);
-				}
-
-				position = start + tilingVector.normalized * (nTiles - 1) * tileWidth;
+			}
+			else
+			{
 				AddBorderTile (tileRight, position, orientation);
+			}
 
-				foreach (GameObject child in generatedTiles) {
-						child.transform.parent = platform.transform;
-						child.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
-				}
+			for (int i = 1; i < nTiles-1; i++) {
+					position = start + tilingVector.normalized * i * tileWidth;
+					AddCenterTile (tile, position, orientation);
+			}
+
+			position = start + tilingVector.normalized * (nTiles - 1) * tileWidth;
+
+			if(leftToRight)
+			{
+				AddBorderTile (tileRight, position, orientation);
+			}
+			else
+			{
+				AddBorderTile (tileLeft, position, orientation);
+			}
+
+			foreach (GameObject child in generatedTiles) {
+					child.transform.parent = platform.transform;
+					child.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			}
 		}
 		return nTiles;
 	}
