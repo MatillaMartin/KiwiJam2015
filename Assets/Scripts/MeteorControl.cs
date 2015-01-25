@@ -20,8 +20,11 @@ public class MeteorControl : MonoBehaviour {
 		
 		float viewPortWidth = 
 			Camera.main.ViewportToWorldPoint(new Vector3( 1.0f, 1.0f, Camera.main.nearClipPlane)).x - 
-				Camera.main.ViewportToWorldPoint(new Vector3( 0.0f, 0.0f, Camera.main.nearClipPlane)).x;
-		float scaleUp = viewPortWidth / collider2D.bounds.size.x * (1.0f - offset);
+			Camera.main.ViewportToWorldPoint(new Vector3( 0.0f, 0.0f, Camera.main.nearClipPlane)).x;
+		float currentWidth =
+			spawnerRight.collider2D.bounds.max.x - 
+			spawnerLeft.collider2D.bounds.min.x;
+		float scaleUp = viewPortWidth / currentWidth;
 		Vector3 newScale = scaleUp * transform.localScale;
 		transform.localScale = newScale;
 	}

@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: background_back_square
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 7, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -17,9 +17,9 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 71e97e91f10764c6e9229bab024f76cd, type: 3}
-          m_Scale: {x: 2, y: 2}
-          m_Offset: {x: .5, y: 0}
+          m_Texture: {fileID: 2800000, guid: 76f5960a3809f49ce8ec2b9d7dabe00d, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: .999284267}
       data:
         first:
           name: _Illum

@@ -30,7 +30,7 @@ public class KiwiAudioControl : MonoBehaviour {
 	void playRandomClip()
 	{
 		if(audioSamples.Length > 0){
-			AudioClip clip = audioSamples[Random.Range(0, audioSamples.Length)];
+			AudioClip clip = audioSamples[Random.Range(0, audioSamples.Length-1)];
 			audioSource.PlayOneShot(clip, audioVolume);
 		}
 	}
