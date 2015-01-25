@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GameEngine : MonoBehaviour {
 
-	public AudioSource[] firstLevelInsoults;
-	public AudioSource[] secondLevelInsoults;
-	public AudioSource[] thirdLevelInsoults;
-	public AudioSource[] fourLevelInsoults;
+	public AudioSource[] firstLevelInsults;
+	public AudioSource[] secondLevelInsults;
+	public AudioSource[] thirdLevelInsults;
+	public AudioSource[] fourLevelInsults;
 
 	public AudioSource leftSharkWarning, rightSharkWarning;
 	public AudioSource leftMeteorWarning, rightMeteorWarning;
