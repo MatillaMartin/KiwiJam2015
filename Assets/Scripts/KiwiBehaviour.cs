@@ -107,7 +107,6 @@ public class KiwiBehaviour : MonoBehaviour
 
 			if(other.transform.root.gameObject.Equals(m_current_platform))
 			{
-				Debug.Log("my platform");
 				return;
 			}
 			else
@@ -131,7 +130,7 @@ public class KiwiBehaviour : MonoBehaviour
 					if((facingRight && dotProduct > 0.70716f) || (!facingRight && dotProduct < -0.70716f))
 					{
 
-						Debug.Log ("Its not my platform, lets jump!");
+						// Debug.Log ("Its not my platform, lets jump!");
 						jumpDestination = other.transform.parent.position;
 						mustJump = true;						
 					}
@@ -159,10 +158,9 @@ public class KiwiBehaviour : MonoBehaviour
 		//may slow down app
 		if(bCheckStayTrigger)
 		{
-			Debug.Log ("Checking stay");
+			//Debug.Log ("Checking stay");
 			if(other.transform.root.gameObject.Equals(m_current_platform))
 			{
-				Debug.Log("my platform");
 				return;
 			}
 			else

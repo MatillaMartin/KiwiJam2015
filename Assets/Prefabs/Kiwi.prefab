@@ -14,9 +14,10 @@ GameObject:
   - 114: {fileID: 11408520}
   - 50: {fileID: 5008520}
   - 61: {fileID: 6108520}
-  m_Layer: 0
+  - 114: {fileID: 11476256}
+  m_Layer: 9
   m_Name: Kiwi
-  m_TagString: Untagged
+  m_TagString: Kiwi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +86,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd63a562843eaf44931754091107732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KiwiRigidbody: {fileID: 0}
   velocityX: 3
+  m_maxSpeed: 0
+--- !u!114 &11476256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11497244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +116,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
+  kiwiDiedSamples: []
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
