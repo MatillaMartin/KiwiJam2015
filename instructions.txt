@@ -1,0 +1,5 @@
+en la escena final:
+
+	en el audio source de la camara poner el nuevo audio.
+
+	
