@@ -3,13 +3,14 @@ using System.Collections;
 
 public class KiwiLifeManager : MonoBehaviour {
 	public GameEngine gameLogic;
-	
-	public void Start()
+
+
+	void Start()
 	{
-		gameLogic = FindObjectOfType<GameEngine>();
+		gameLogic = GameObject.FindObjectOfType<GameEngine>();
 	}
-	
-	public void Die()
+
+	void Die()
 	{
 		gameLogic.ReportDeath();
 		Destroy(gameObject);
