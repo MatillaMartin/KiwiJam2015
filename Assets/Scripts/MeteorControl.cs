@@ -3,19 +3,19 @@ using System.Collections;
 
 public class MeteorControl : MonoBehaviour {
 
-	private GameObject spawnerLeft;
-	private GameObject spawnerRight;
+	private MeteoriteSpawn spawnerLeft;
+	private MeteoriteSpawn spawnerRight;
 	
 	
 	// Use this for initialization
 	void Start () {
-		spawnerLeft = transform.Find ("Meteorite Spawn Left").gameObject;
-		spawnerRight = transform.Find ("Meteorite Spawn Right").gameObject;
+		spawnerLeft = transform.Find ("Meteorite Spawn Left").gameObject.GetComponent<MeteoriteSpawn>();
+		spawnerRight = transform.Find ("Meteorite Spawn Right").gameObject.GetComponent<MeteoriteSpawn>();
 		
 		float offset = 0.1f;
 		
 		Vector3 spawnerPos = 
-			Camera.main.ViewportToWorldPoint(new Vector3( 0.5f, 1.0f + offset, 0.0f));
+			Camera.main.ViewportToWorldPoint(new Vector3( 0.5f, 1.0f + offset, transform.position.z));
 		transform.position = spawnerPos;
 		
 		float viewPortWidth = 
@@ -32,5 +32,16 @@ public class MeteorControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+	}
+	
+	
+	public void SpawnLeft()
+	{
+		spawnerLeft.spawnMeteor();
+	}
+	
+	public void SpawnRight()
+	{
+		spawnerRight.spawnMeteor();
 	}
 }

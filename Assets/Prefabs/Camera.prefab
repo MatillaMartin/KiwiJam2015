@@ -12,16 +12,17 @@ GameObject:
   - 64: {fileID: 6442136}
   - 23: {fileID: 2342136}
   - 114: {fileID: 11442136}
+  - 114: {fileID: 11448466}
   m_Layer: 0
   m_Name: ForeGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &142138
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -128,6 +129,8 @@ GameObject:
   - 64: {fileID: 6442140}
   - 23: {fileID: 2342140}
   - 114: {fileID: 11442150}
+  - 114: {fileID: 11448468}
+  - 114: {fileID: 11448464}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -137,7 +140,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &142150
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -168,6 +171,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &148464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 448464}
+  - 114: {fileID: 11448470}
+  m_Layer: 0
+  m_Name: Meteors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &442136
 Transform:
   m_ObjectHideFlags: 1
@@ -187,11 +206,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.98999977, y: 21.6299992, z: 1.89999998}
-  m_LocalScale: {x: 12.7720013, y: 1, z: 1}
+  m_LocalPosition: {x: -10.1899996, y: .129999995, z: -11.0100002}
+  m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 442146}
-  m_RootOrder: 1
+  m_Father: {fileID: 448464}
+  m_RootOrder: 0
 --- !u!4 &442140
 Transform:
   m_ObjectHideFlags: 1
@@ -241,9 +260,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 442142}
-  - {fileID: 442138}
-  - {fileID: 442150}
   - {fileID: 442152}
+  - {fileID: 448464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &442148
@@ -265,11 +283,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.30000019, y: 21.6299992, z: 1.89999998}
-  m_LocalScale: {x: 12.7720013, y: 1, z: 1}
+  m_LocalPosition: {x: 9.10000038, y: .129999995, z: -11.0100002}
+  m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 442146}
-  m_RootOrder: 2
+  m_Father: {fileID: 448464}
+  m_RootOrder: 1
 --- !u!4 &442152
 Transform:
   m_ObjectHideFlags: 1
@@ -283,7 +301,21 @@ Transform:
   - {fileID: 442148}
   - {fileID: 442136}
   m_Father: {fileID: 442146}
-  m_RootOrder: 3
+  m_RootOrder: 1
+--- !u!4 &448464
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .200000003, y: 21.5, z: 19.5400009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 442138}
+  - {fileID: 442150}
+  m_Father: {fileID: 442146}
+  m_RootOrder: 2
 --- !u!20 &2042136
 Camera:
   m_ObjectHideFlags: 1
@@ -342,7 +374,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142142}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -362,7 +394,7 @@ Renderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142148}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -641,7 +673,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Meteorite: {fileID: 184830, guid: a4688b74c4d444082b32a7711457417e, type: 2}
-  spawnTimerRange: {x: 5, y: 8}
 --- !u!114 &11442142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -732,7 +763,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Meteorite: {fileID: 184830, guid: a4688b74c4d444082b32a7711457417e, type: 2}
-  spawnTimerRange: {x: 4, y: 7}
+--- !u!114 &11448464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e913f554b41b4fd5b464a7bef320587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorPalette: []
+  lerpTime: 2
+--- !u!114 &11448466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296c80e828caa4f72aec75f8685747c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetNormalized: 0
+  fitWidth: 1
+  fitHeight: 0
+--- !u!114 &11448468
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 296c80e828caa4f72aec75f8685747c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetNormalized: 0
+  fitWidth: 1
+  fitHeight: 0
+--- !u!114 &11448470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba1612d5f85cc41159401f7b71628cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12442136
 Behaviour:
   m_ObjectHideFlags: 1
