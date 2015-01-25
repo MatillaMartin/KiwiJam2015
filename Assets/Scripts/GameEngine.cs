@@ -11,8 +11,7 @@ public class GameEngine : MonoBehaviour {
 	public AudioSource leftSharkWarning, rightSharkWarning;
 	public AudioSource leftMeteorWarning, rightMeteorWarning;
 
-	public float minTimeToSpawnShark, maxTimeToSpawnShark;
-	public float minTimeToSpawnMeteorite, maxTimeToSpawnMeteorite;
+	public float minTimeToSpawnWarning, maxTimeToSpawnWarning;
 
 	public float minTimeBetweenWarningAndEvent;
 	public float maxTimeBetweenWarningAndEvent;
@@ -25,10 +24,18 @@ public class GameEngine : MonoBehaviour {
 		SharkSpawner = GetComponent("SharkSpawner") as Component;
 		MeteoriteLeftSpawner = GetComponent("Meteorite Spawn Left") as Component;
 		MeteoriteRightSpawner = GetComponent("Meteorite Spawn Right") as Component;
+
+		StartCoroutine(SpawnObstacle(Random.Range(minTimeToSpawnWarning, maxTimeToSpawnWarning)));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
+	}
+
+	IEnumerator SpawnObstacle(float timeToSpawn)
+	{
+		yield return new WaitForSeconds(timeToSpawn);
+		Debug.Log("SpawnObstacle!!!!");
 	}
 }
