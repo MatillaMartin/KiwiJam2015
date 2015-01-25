@@ -10,8 +10,12 @@ public class KiwiBehaviour : MonoBehaviour
 	private bool jumping = false;
 	private bool mustJump = false;
 	private Vector2 jumpDestination; 
-
+	[SerializeField] float m_maxSpeed; // velocity
 	// Gameloop functions
+
+	private GameObject m_current_platform;
+
+	private bool bCheckStayTrigger = false;
 
     void Start()
     {
@@ -27,12 +31,60 @@ public class KiwiBehaviour : MonoBehaviour
 	    }
 		else if (!jumping)
 		{
+			Debug.Log ("Jumping!");
 			float deltaX = jumpDestination.x - rigidbody2D.transform.position.x;
-			float finalTime = 1.0f;
-			float velocityX = deltaX * finalTime;
+			float deltaY = jumpDestination.y - (rigidbody2D.transform.position.y - collider2D.bounds.size.y/2);
+			float g = -Physics.gravity.y;
+			float x = deltaX; // target x
+			float y = deltaY; // target y
+			float v = m_maxSpeed;
+			float o = float.NaN;
+			float goodO = 0.0f;
+			float goodV = 0.0f;
+			bool bGotNonNan = false;
+			int iterations = 0;
+			bool iterate = true;
+			if(iterate)
+			{
+				Debug.Log ("Iterating to find least velocity");
+				do
+				{
+					float s = (v * v * v * v) - g * (g * (x * x) + 2.0f * y * (v * v)); //substitution
+					o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
+					//Debug.Log (v);
+					iterations++;
+					//Debug.Log (o);
+					if(!float.IsNaN(o))
+					{
+						goodO = o;
+						goodV = v;
+						bGotNonNan = true;
 
-			float velocityY = ( 2.0f * (jumpDestination.y - rigidbody2D.transform.position.y + collider2D.bounds.size.y * 0.5f) - (Physics.gravity.y * finalTime) ) / 2.0f;
-
+					}
+					v -= 0.5f;
+				} while(!float.IsNaN(o) && iterations < 50 && v > 0);
+				if(!bGotNonNan)
+				{
+					Debug.Log ("Cannot jump! need more velocity");
+					mustJump = false;
+					return;
+				}
+				else{
+					o = goodO;
+					v = goodV;
+				}
+			}
+			else
+			{
+				float s = (v * v * v * v) - g * (g * (x * x) + 2.0f * y * (v * v)); //substitution
+				o = Mathf.Atan((((v * v) + Mathf.Sqrt(s)) / (g * x))); // launch angle
+			}
+				
+			Debug.Log(deltaX + " : " +deltaY);
+			float velocityX = (Mathf.Sign(deltaX)*Mathf.Abs(v*Mathf.Cos(o)));
+			float velocityY = (Mathf.Sign(deltaY)*Mathf.Abs(v*Mathf.Sin(o)));
+			Debug.Log ("Set velocity yo rigidbody!");
+			Debug.Log ("velocity: " + new Vector2(velocityX, velocityY));
 			rigidbody2D.velocity = new Vector2(velocityX, velocityY);
 
 			mustJump = false;
@@ -44,27 +96,72 @@ public class KiwiBehaviour : MonoBehaviour
 	{
     }
 
-	void OnTriggerEnter2D(Collider2D other) 
+	void shouldJump(Collider2D other)
 	{
-		if (!jumping)
+		//Jumping waypoints
+		if (other.gameObject.layer == 8 && other.tag == "JumpTrigger") 
 		{
-			if (other.tag == "PlatformLimit")
+			if(other.transform.root.gameObject.Equals(m_current_platform))
 			{
-				Flip();
+				return;
 			}
-			else if (other.tag == "JumpTrigger")
+			else
 			{
-				jumpDestination = new Vector2(other.transform.parent.position.x, other.transform.parent.position.y);
-				mustJump = true;
+				if (!jumping)
+				{
+					if((facingRight && this.transform.position.x > other.transform.position.x) ||
+					   (!facingRight && this.transform.position.x < other.transform.position.x))
+					{
+						return;
+					}
+
+					Vector3 triggerNormal = other.transform.up;
+					Debug.Log ("Checking normals: " + triggerNormal);
+					float dotProduct = Vector2.Dot (this.transform.right, triggerNormal);
+					Debug.Log (dotProduct);
+					if((facingRight && dotProduct > 0.70716f) || (!facingRight && dotProduct < -0.70716f))
+					{
+
+						Debug.Log ("Its not my platform, lets jump!");
+						jumpDestination = other.transform.parent.position;
+						mustJump = true;						
+					}
+				}
 			}
 		}
 	}
-
-	void OnCollisionEnter2D(Collision2D collision) 
+	
+	void OnTriggerEnter2D(Collider2D other) 
 	{
-		if (collision.collider.tag == "Platform")
+		shouldJump (other);
+		if(other.gameObject.layer != 8)
+		{
+			if (!jumping)
+			{
+				if (other.tag == "PlatformLimit")
+				{
+					Flip();
+				}
+			}
+		}
+	}
+	void OnTriggerStay2D(Collider2D other)
+	{
+		//may slow down app
+		if(bCheckStayTrigger)
+		{
+			bCheckStayTrigger = false;
+			shouldJump (other);
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other) 
+	{
+		m_current_platform = other.transform.root.gameObject;
+		if (other.collider.tag == "Platform")
 		{
 			jumping = false;
+			mustJump = false;
 		}
 	}
 
@@ -73,6 +170,7 @@ public class KiwiBehaviour : MonoBehaviour
     private void Flip()
     {
         facingRight = !facingRight;
+		bCheckStayTrigger = true;
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
