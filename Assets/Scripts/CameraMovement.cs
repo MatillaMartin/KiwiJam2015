@@ -28,4 +28,9 @@ public class CameraMovement : MonoBehaviour {
 		// wall1 tileable
 		// base
 	}
+	
+	public void setCameraSpeedVertical(float v)
+	{
+		cameraSpeed = v;
+	}
 }

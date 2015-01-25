@@ -2,7 +2,11 @@
 using System.Collections;
 
 public class GameEngine : MonoBehaviour {
-
+	public OffsetScroller backGround;
+	public float levelTime = 120.0f;
+	private bool levelWin = false;
+	
+	
 	public AudioClip[] firstLevelInsults;
 	public AudioClip[] secondLevelInsults;
 	public AudioClip[] thirdLevelInsults;
@@ -31,14 +35,30 @@ public class GameEngine : MonoBehaviour {
 	//private Component SharkSpawner, MeteoriteLeftSpawner, MeteoriteRightSpawner;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		audioSource = Camera.main.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		UpdateMeteorLogics();
+		
+		if(!levelWin)
+		{
+			if(levelTime < 0.0f)
+			{
+				levelWin = true;
+				backGround.stopAtNextLoop = true;	
+			}
+			else
+			{
+				levelTime-= Time.deltaTime;
+			}
+		}
 	}
+	
+	
 	
 	
 	void UpdateMeteorLogics()

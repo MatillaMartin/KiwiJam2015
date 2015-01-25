@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class FitToViewport : MonoBehaviour {
-	
+	public Vector2 positionOffsetNormalized = new Vector2(0.0f, 0.0f);
 	public float offsetNormalized;
 	public bool fitWidth = true;
 	public bool fitHeight = true;
+	public bool toCameraPosY = false;
+	public bool toCameraPosX = true;
 	
 	// Use this for initialization
 	void Start () {
@@ -30,7 +32,10 @@ public class FitToViewport : MonoBehaviour {
 			transform.localScale);
 			
 		transform.localScale = newScale;
-		transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, transform.position.z);
+		transform.position = new Vector3(
+			(toCameraPosX ? Camera.main.transform.position.x : transform.position.x) + positionOffsetNormalized.x * viewPortWidth, 
+			(toCameraPosY ? Camera.main.transform.position.y : transform.position.y) + positionOffsetNormalized.y * viewPortHeight, 
+			transform.position.z);
 	}
 	
 	// Update is called once per frame

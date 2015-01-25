@@ -338,7 +338,7 @@ Transform:
   m_Children:
   - {fileID: 2062942477}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!114 &194038247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,7 +941,7 @@ Transform:
   m_Children:
   - {fileID: 255148167}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!1 &572277318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1079,7 @@ Transform:
   m_Children:
   - {fileID: 1209212013}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
 --- !u!114 &680385710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1601,65 +1601,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1542302794}
   m_RootOrder: 0
---- !u!1 &965589384
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 965589388}
-  - 33: {fileID: 965589387}
-  - 61: {fileID: 965589386}
-  - 114: {fileID: 965589385}
-  m_Layer: 0
-  m_Name: PitOfDoom
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &965589385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 965589384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c41153a3e87a4b58a2208fff2d62501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!61 &965589386
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 965589384}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Size: {x: 1, y: 1}
-  m_Center: {x: 0, y: 0}
---- !u!33 &965589387
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 965589384}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &965589388
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 965589384}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0200009998, y: -9.03999996, z: 1.13}
-  m_LocalScale: {x: 39.9973602, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
 --- !u!1001 &1025244337
 Prefab:
   m_ObjectHideFlags: 0
@@ -1854,7 +1795,7 @@ Transform:
   m_Children:
   - {fileID: 849501705}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!114 &1082368064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1902,7 +1843,7 @@ Transform:
   m_Children:
   - {fileID: 876340925}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!114 &1139337530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2105,7 +2046,7 @@ Transform:
   m_Children:
   - {fileID: 2072469665}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!114 &1304302660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2268,7 +2209,7 @@ Transform:
   m_Children:
   - {fileID: 1951463522}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!114 &1333156457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2683,7 +2624,7 @@ Transform:
   m_Children:
   - {fileID: 936661821}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
 --- !u!114 &1542302795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3640,7 +3581,7 @@ Transform:
   m_Children:
   - {fileID: 1395899015}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!58 &2037713415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4054,7 +3995,7 @@ Transform:
   m_Children:
   - {fileID: 1744104427}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
 --- !u!1001 &2084366779
 Prefab:
   m_ObjectHideFlags: 0
@@ -4309,7 +4250,7 @@ Transform:
   m_Children:
   - {fileID: 1926716368}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!1 &2114933380
 GameObject:
   m_ObjectHideFlags: 0
