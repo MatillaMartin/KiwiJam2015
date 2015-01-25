@@ -9,6 +9,8 @@ public class Shark : MonoBehaviour {
 	public GameObject sharkSpawn;
 	private Vector2 spawnRange;
 
+
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();

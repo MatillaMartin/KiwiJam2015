@@ -6,41 +6,56 @@ public class DieAfterSeconds : MonoBehaviour {
 	public AudioClip fallingAudioClip;
 	public AudioClip impactAudioClip;
 	public AudioClip onWaterEnterAudioClip;
-	public AudioSource audioSource;
-	
-	// Use this for initialization
-	void Start () {
-		audioSource = Camera.main.GetComponent<AudioSource>();
-	}
+
+	private AudioSource audioSource;
+	private float currentTime;
 	
 	void Awake()
 	{
-		Destroy(gameObject, seconds);
+		audioSource = Camera.main.GetComponent<AudioSource>();
+		currentTime = 0.0f;
+
+		if (fallingAudioClip)
+		{
+			audioSource.PlayOneShot(fallingAudioClip);
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		currentTime += Time.deltaTime;
 
+		if (currentTime >= seconds)
+		{
+			audioSource.Stop();
+			Destroy(gameObject);
+		}
 	}
 
-	void OnCollisionEnter2D(Collision2D coll) {
-		if (coll.gameObject.name == "Water" && onWaterEnterAudioClip)
+	void OnCollisionEnter2D(Collision2D coll) 
+	{
+		audioSource.Stop ();
+
+		if (coll.gameObject.tag == "Kiwi")
+		{
+			coll.gameObject.SendMessage("Die");
+		}
+
+		if (impactAudioClip)
+		{
+			audioSource.PlayOneShot(impactAudioClip);
+		}
+
+		Destroy(gameObject);
+	}
+
+	void OnTriggerEnter2D(Collider2D other) 
+	{
+		audioSource.Stop();
+
+		if (other.gameObject.name == "WaterCollider" && onWaterEnterAudioClip)
 		{
 			audioSource.PlayOneShot(onWaterEnterAudioClip);
-		}
-		else 
-		{
-			if (coll.gameObject.tag == "Kiwi")
-			{
-				coll.gameObject.SendMessage("Die");
-			}
-
-			if (impactAudioClip)
-			{
-				audioSource.PlayOneShot(impactAudioClip);
-			}
-
-			Destroy(gameObject);
 		}
 	}
 }

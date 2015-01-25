@@ -85,10 +85,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seconds: 5
-  fallingAudioClip: {fileID: 0}
-  impactAudioClip: {fileID: 0}
-  onWaterEnterAudioClip: {fileID: 0}
-  audioSource: {fileID: 0}
+  fallingAudioClip: {fileID: 8300000, guid: a783b7ef0186e9c428ca051a5b4eb6a2, type: 3}
+  impactAudioClip: {fileID: 8300000, guid: e7fe0a2ee1ac93a4da5449d448a337a3, type: 3}
+  onWaterEnterAudioClip: {fileID: 8300000, guid: 19f3b7a5a8db5fb43bb25d0002505963,
+    type: 3}
 --- !u!212 &21284830
 SpriteRenderer:
   m_ObjectHideFlags: 1
