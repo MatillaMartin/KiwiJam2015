@@ -3794,11 +3794,12 @@ MonoBehaviour:
   meteorVolume: 0
   mamaKiwiVolume: 0
   meteorLeftMessage:
-  - {fileID: 8300000, guid: ad8082e73992c4a378c1c43f7e46f5df, type: 3}
+  - {fileID: 8300000, guid: 3ce928770d1ec794d86f2752caffd69c, type: 3}
   meteorRightMessage:
-  - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
+  - {fileID: 8300000, guid: 3c5cfc2cf4886bf41a178fe6431e33eb, type: 3}
   meteorControl: {fileID: 572277320}
   sharkControl: {fileID: 492174096}
+  meteorSpawnTimer: 0
   meteorSpawnTimeRange: {x: 1, y: 2}
 --- !u!1 &1744104426
 GameObject:
