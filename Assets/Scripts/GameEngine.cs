@@ -24,7 +24,7 @@ public class GameEngine : MonoBehaviour {
 	public MeteorControl meteorControl;
 	public Shark sharkControl;
 	
-	private float meteorSpawnTimer;
+	public float meteorSpawnTimer = 2.0f;
 	private bool meteorSideLeft = false;
 	public Vector2 meteorSpawnTimeRange = new Vector2(10.0f, 20.0f);
 	
