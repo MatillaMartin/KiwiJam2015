@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74340e11156a7e04297bfde909bf7036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_platformMaxBlocks: 0
+  m_platformMaxBlocks: 10
   m_platformTile: {fileID: 143188, guid: 0d6ebe241553ed1409eca23ed5b30620, type: 2}
   m_platformTileLeft: {fileID: 140208, guid: 6ae8a8ecc1e0e2b43baf56da844fc69f, type: 2}
   m_platformTileRight: {fileID: 144134, guid: d0f3fffc463b7864fb5bf4142f07418c, type: 2}
