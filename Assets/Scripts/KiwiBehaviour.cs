@@ -3,18 +3,20 @@ using System.Collections;
 
 public class KiwiBehaviour : MonoBehaviour
 {
-    public Rigidbody2D KiwiRigidbody;
+   // public Rigidbody2D KiwiRigidbody;
     public float velocityX = 3.0f;
+    private bool facingLeft = true;
 
-	private bool facingRight = true;
 	private bool jumping = false;
 	private bool mustJump = false;
 	private Vector2 jumpDestination; 
+	private Animator anim;
 
 	// Gameloop functions
 
     void Start()
     {
+   		anim = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class KiwiBehaviour : MonoBehaviour
 	{
 		if (!mustJump && !jumping)
 		{
-	        float move = facingRight ? 1.0f : -1.0f;
+	        float move = facingLeft ? -1.0f : 1.0f;
 			rigidbody2D.velocity = new Vector2(move * velocityX, rigidbody2D.velocity.y);
 	    }
 		else if (!jumping)
@@ -36,8 +38,25 @@ public class KiwiBehaviour : MonoBehaviour
 			rigidbody2D.velocity = new Vector2(velocityX, velocityY);
 
 			mustJump = false;
-			jumping = true;
+			setJumping(true);
 		}
+		
+		if(rigidbody2D.velocity.x > 0.0f && facingLeft)
+			Flip ();
+		else if (rigidbody2D.velocity.x < 0.0f && !facingLeft)
+			Flip();
+			
+		anim.SetFloat("VerticalVelocity", rigidbody2D.velocity.y);
+	}
+	
+	
+	void Flip()
+	{
+		facingLeft = !facingLeft;
+		Vector3 theScale = transform.localScale;
+		theScale.x *= -1;
+		transform.localScale = theScale;
+		
 	}
 
     void Update()
@@ -64,17 +83,16 @@ public class KiwiBehaviour : MonoBehaviour
 	{
 		if (collision.collider.tag == "Platform")
 		{
-			jumping = false;
+			setJumping(false);
 		}
+	}
+	
+	void setJumping(bool isJumping)
+	{
+		jumping = isJumping;
+		anim.SetBool("Jumping", jumping);
 	}
 
 	// Utility functions
 
-    private void Flip()
-    {
-        facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
 }

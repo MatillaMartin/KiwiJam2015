@@ -11,6 +11,7 @@ public class KiwiAudioControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audioPlayTimer = Random.Range(audioPlayTimeRange.x, audioPlayTimeRange.y);
+		audioSource = Camera.main.GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame

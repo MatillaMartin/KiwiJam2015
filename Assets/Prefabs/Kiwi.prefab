@@ -11,6 +11,9 @@ GameObject:
   - 212: {fileID: 21271520}
   - 95: {fileID: 9571520}
   - 114: {fileID: 11497244}
+  - 114: {fileID: 11408520}
+  - 50: {fileID: 5008520}
+  - 61: {fileID: 6108520}
   m_Layer: 0
   m_Name: Kiwi
   m_TagString: Untagged
@@ -25,11 +28,37 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.11999989, y: 1.51999998, z: 4.26999998}
+  m_LocalPosition: {x: -4.05999994, y: 40.2299995, z: 4.26999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5008520
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171520}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 1
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!61 &6108520
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171520}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: 1.45000005, y: 1.38999999}
+  m_Center: {x: .25, y: -.170000002}
 --- !u!95 &9571520
 Animator:
   serializedVersion: 3
@@ -45,6 +74,18 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11408520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 171520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd63a562843eaf44931754091107732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityX: 3
 --- !u!114 &11497244
 MonoBehaviour:
   m_ObjectHideFlags: 1
