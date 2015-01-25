@@ -37,7 +37,7 @@ public class GameEngine : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		audioSource = Camera.main.GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -76,14 +76,14 @@ public class GameEngine : MonoBehaviour {
 		}
 		else
 		{
-			if(audioSource.isPlaying == false)
-			{
+			//if(audioSource.isPlaying == false)
+			//{
 				if(meteorSideLeft)
 					meteorControl.SpawnLeft();
 				else
 					meteorControl.SpawnRight();
 				meteorSpawning = false;
-			}
+			//}
 		}
 	}
 	

@@ -14,6 +14,7 @@ public class DeadlyWater : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter2D(Collider2D other) {
-		other.SendMessage("Die");
+		if (other.gameObject.tag == "Kiwi")
+			other.SendMessage("Die");
 	}
 }

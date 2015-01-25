@@ -36,8 +36,8 @@ public class KiwiAudioControl : MonoBehaviour {
 			audioSource.PlayOneShot(clip, audioVolume);
 		}
 	}
-
-	void OnDestroy()
+	
+	void PlayDeathClip()
 	{
 		if (kiwiDiedSamples.Length > 0.0f)
 		{

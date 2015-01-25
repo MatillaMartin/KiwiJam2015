@@ -39,6 +39,7 @@ public class DieAfterSeconds : MonoBehaviour {
 
 		if (coll.gameObject.tag == "Kiwi")
 		{
+			coll.gameObject.SendMessage("PlayDeathClip");
 			coll.gameObject.SendMessage("Die");
 		}
 
