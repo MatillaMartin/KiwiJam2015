@@ -319,6 +319,7 @@ GameObject:
   - 61: {fileID: 194038249}
   - 58: {fileID: 194038248}
   - 114: {fileID: 194038247}
+  - 82: {fileID: 194038255}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -423,7 +424,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -466,6 +470,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdc5eb065b24144c38cf5b8196f5c254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &194038255
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 780823943}
+  m_GameObject: {fileID: 194038245}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &208326150
 Prefab:
   m_ObjectHideFlags: 0
@@ -557,6 +620,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11442142, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: attackAudioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 442146, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -592,6 +659,38 @@ Prefab:
     - target: {fileID: 142146, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 442140, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.34500003
+      objectReference: {fileID: 0}
+    - target: {fileID: 11442142, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: attackAudioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4f2235a3bd43fe942b29b7d46d56a2bd, type: 3}
+    - target: {fileID: 11442142, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: attackAudioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: a83c2da9b5d48774c8770c077ff8c8ad, type: 3}
+    - target: {fileID: 11442142, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: sinkAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c151511d2cd73c544a53a8fb179500ca, type: 3}
+    - target: {fileID: 11442142, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: riseAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c151511d2cd73c544a53a8fb179500ca, type: 3}
+    - target: {fileID: 8218964, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5df6212881b1ef84389b72eb6697c5e1, type: 3}
+    - target: {fileID: 8218964, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8218964, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
+      propertyPath: m_Pitch
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4e462d336263f4ba28abecf003e3a2d5, type: 2}
@@ -678,6 +777,7 @@ GameObject:
   - 50: {fileID: 492174095}
   - 61: {fileID: 492174098}
   - 95: {fileID: 492174099}
+  - 82: {fileID: 492174097}
   m_Layer: 11
   m_Name: Shark
   m_TagString: Untagged
@@ -692,7 +792,7 @@ Transform:
   m_PrefabInternal: {fileID: 282166793}
   m_GameObject: {fileID: 492174092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.075000003, z: .300000012}
+  m_LocalPosition: {x: 0, y: -1.34500003, z: .300000012}
   m_LocalScale: {x: .0799999982, y: .0799999982, z: 1.34092975}
   m_Children: []
   m_Father: {fileID: 749145532}
@@ -751,6 +851,69 @@ MonoBehaviour:
   jumpForce: 500
   attackTimerRange: {x: 5, y: 10}
   sharkSpawn: {fileID: 870236869}
+  attackAudioClips:
+  - {fileID: 8300000, guid: 4f2235a3bd43fe942b29b7d46d56a2bd, type: 3}
+  - {fileID: 8300000, guid: a83c2da9b5d48774c8770c077ff8c8ad, type: 3}
+  riseAudioClip: {fileID: 8300000, guid: c151511d2cd73c544a53a8fb179500ca, type: 3}
+  sinkAudioClip: {fileID: 8300000, guid: c151511d2cd73c544a53a8fb179500ca, type: 3}
+--- !u!82 &492174097
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 492174092}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!61 &492174098
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -795,6 +958,7 @@ GameObject:
   - 61: {fileID: 560150159}
   - 58: {fileID: 560150158}
   - 114: {fileID: 560150157}
+  - 82: {fileID: 560150166}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -886,7 +1050,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -942,6 +1109,65 @@ Transform:
   - {fileID: 255148167}
   m_Father: {fileID: 0}
   m_RootOrder: 11
+--- !u!82 &560150166
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1749927010}
+  m_GameObject: {fileID: 560150156}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &572277318
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1286,7 @@ GameObject:
   - 61: {fileID: 680385712}
   - 58: {fileID: 680385711}
   - 114: {fileID: 680385710}
+  - 82: {fileID: 680385718}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -1164,7 +1391,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -1207,6 +1437,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdc5eb065b24144c38cf5b8196f5c254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &680385718
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1916482268}
+  m_GameObject: {fileID: 680385708}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &749145531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,6 +2009,7 @@ GameObject:
   - 61: {fileID: 1082368057}
   - 58: {fileID: 1082368056}
   - 114: {fileID: 1082368064}
+  - 82: {fileID: 1082368065}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -1799,7 +2089,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -1867,6 +2160,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1082368065
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 208326150}
+  m_GameObject: {fileID: 1082368055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1139337528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1883,6 +2235,7 @@ GameObject:
   - 61: {fileID: 1139337532}
   - 58: {fileID: 1139337531}
   - 114: {fileID: 1139337530}
+  - 82: {fileID: 1139337538}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -1987,7 +2340,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -2030,6 +2386,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdc5eb065b24144c38cf5b8196f5c254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &1139337538
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1686817697}
+  m_GameObject: {fileID: 1139337528}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1209212011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2086,6 +2501,7 @@ GameObject:
   - 61: {fileID: 1304302662}
   - 58: {fileID: 1304302661}
   - 114: {fileID: 1304302660}
+  - 82: {fileID: 1304302668}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -2190,7 +2606,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -2233,6 +2652,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdc5eb065b24144c38cf5b8196f5c254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &1304302668
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 2084366779}
+  m_GameObject: {fileID: 1304302658}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1333156455
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2727,7 @@ GameObject:
   - 61: {fileID: 1333156459}
   - 58: {fileID: 1333156458}
   - 114: {fileID: 1333156457}
+  - 82: {fileID: 1333156465}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -2353,7 +2832,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -2396,6 +2878,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdc5eb065b24144c38cf5b8196f5c254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &1333156465
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 110514614}
+  m_GameObject: {fileID: 1333156455}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1351325722
 Prefab:
   m_ObjectHideFlags: 0
@@ -2558,8 +3099,8 @@ AudioSource:
   m_GameObject: {fileID: 1394851311}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 5df6212881b1ef84389b72eb6697c5e1, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2664,6 +3205,7 @@ GameObject:
   - 61: {fileID: 1542302797}
   - 58: {fileID: 1542302796}
   - 114: {fileID: 1542302795}
+  - 82: {fileID: 1542302803}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -2768,7 +3310,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -2811,6 +3356,65 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bdc5eb065b24144c38cf5b8196f5c254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!82 &1542302803
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1351325722}
+  m_GameObject: {fileID: 1542302793}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1559526737
 Prefab:
   m_ObjectHideFlags: 0
@@ -2915,6 +3519,7 @@ GameObject:
   - 61: {fileID: 1702593693}
   - 58: {fileID: 1702593692}
   - 114: {fileID: 1702593700}
+  - 82: {fileID: 1702593701}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -2994,7 +3599,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -3062,6 +3670,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1702593701
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1711587369}
+  m_GameObject: {fileID: 1702593691}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &1711587369
 Prefab:
   m_ObjectHideFlags: 0
@@ -3621,6 +4288,7 @@ GameObject:
   - 61: {fileID: 2037713416}
   - 58: {fileID: 2037713415}
   - 114: {fileID: 2037713422}
+  - 82: {fileID: 2037713423}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -3713,7 +4381,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -3768,6 +4439,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d963e881266ed1349ab5a2954047e957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &2037713423
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1559526737}
+  m_GameObject: {fileID: 2037713413}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &2062942475
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,6 +4638,7 @@ GameObject:
   - 61: {fileID: 2082387174}
   - 58: {fileID: 2082387173}
   - 114: {fileID: 2082387172}
+  - 82: {fileID: 2082387181}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -3999,7 +4730,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -4055,6 +4789,65 @@ Transform:
   - {fileID: 1744104427}
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!82 &2082387181
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1025244337}
+  m_GameObject: {fileID: 2082387171}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &2084366779
 Prefab:
   m_ObjectHideFlags: 0
@@ -4163,6 +4956,7 @@ GameObject:
   - 61: {fileID: 2111890070}
   - 58: {fileID: 2111890069}
   - 114: {fileID: 2111890068}
+  - 82: {fileID: 2111890077}
   m_Layer: 9
   m_Name: Kiwi
   m_TagString: Kiwi
@@ -4254,7 +5048,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 765199f8e31aa443b808e9b44637178e, type: 3}
   - {fileID: 8300000, guid: 9f8dda0906229407d826711a42e88645, type: 3}
   - {fileID: 8300000, guid: 46be0273ded03491b9e70eb6bc432b56, type: 3}
-  kiwiDiedSamples: []
+  kiwiDiedSamples:
+  - {fileID: 8300000, guid: 0c56f07c09041fa4db4f1c456ea302d2, type: 3}
+  - {fileID: 8300000, guid: 234cc44c325fb4843995c70f300430d3, type: 3}
+  - {fileID: 8300000, guid: 42873bb582a859843a2170de39f98d34, type: 3}
   audioSource: {fileID: 0}
   audioPlayTimeRange: {x: 7, y: 10}
   audioVolume: .150000006
@@ -4310,6 +5107,65 @@ Transform:
   - {fileID: 1926716368}
   m_Father: {fileID: 0}
   m_RootOrder: 14
+--- !u!82 &2111890077
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200766, guid: 2f89d8687a1aa48baa09168fb553792f,
+    type: 2}
+  m_PrefabInternal: {fileID: 2064514309}
+  m_GameObject: {fileID: 2111890067}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: .5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &2114933380
 GameObject:
   m_ObjectHideFlags: 0
