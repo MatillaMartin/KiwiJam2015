@@ -19,6 +19,7 @@ public class KiwiBehaviour : MonoBehaviour
 
     void Start()
     {
+    	velocityX = Random.Range(-1.0f,1.0f) + velocityX;
     }
 
     // Update is called once per frame
